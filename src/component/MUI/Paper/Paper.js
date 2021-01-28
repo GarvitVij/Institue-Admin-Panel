@@ -12,7 +12,8 @@ export default function MUIPaper(props) {
             margin: theme.spacing(2),
             width: '100%',
             height: 'auto',
-            backgroundColor: props.color
+            backgroundColor: props.bgcolor,
+            ...props.extraStyles
           },
         },
       }));

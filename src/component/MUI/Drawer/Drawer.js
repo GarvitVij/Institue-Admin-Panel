@@ -1,6 +1,5 @@
 import React from 'react';
 import Drawer from "@material-ui/core/Drawer";
-import Lists from '../Lists/Lists'
 
 const MUIDrawer = (props) => {
     return(

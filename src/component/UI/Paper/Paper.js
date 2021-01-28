@@ -1,10 +1,12 @@
+import { PinDropSharp } from '@material-ui/icons';
 import React from 'react';
 import MUIPaper from '../../MUI/Paper/Paper'
 
 const Paper = (props) => (
     <MUIPaper
-        color="white"
-        elevation={5}
+        bgcolor={props.bgcolor}
+        elevation={props.elevation}
+        extraStyles={props.extraStyles}
     >{props.children} 
     </MUIPaper>
 )
