@@ -6,15 +6,26 @@ import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '../Typography/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
-const AccordionContent = (props) => {
+const SimpleAccordion = (props) => {
     
     const useStyles = makeStyles((theme) => ({
     root: {
         width: '100%',
+        padding: props.height,
+        marginBottom:props.marginBottom,
     },
-    heading: {
-        fontSize: theme.typography.pxToRem(15),
-        fontWeight: theme.typography.fontWeightRegular,
+    iconStyles: {
+        ...props.iconStyle
+    },
+    AccordionColor: {
+        backgroundColor:"#6B58DF",
+        color:"White"
+    },
+    AccordionDeatils:{
+        backgroundColor:"white",
+        color:"black",
+        ...props.borders,
+        ...props.display
     },
     }));
 
@@ -22,15 +33,15 @@ const AccordionContent = (props) => {
 
     return (
         <div className={classes.root}>
-          <Accordion>
+          <Accordion className={classes.AccordionColor}>
             <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
+              expandIcon={<ExpandMoreIcon className={classes.iconStyles}/>}
               aria-controls="panel1a-content"
               id="panel1a-header"
             >
               <Typography>{props.heading}</Typography>
             </AccordionSummary>
-            <AccordionDetails>
+            <AccordionDetails className={classes.AccordionDeatils}>
                 {props.children}
             </AccordionDetails>
           </Accordion>
@@ -38,4 +49,4 @@ const AccordionContent = (props) => {
       );  
 }
 
-export default AccordionContent
+export default SimpleAccordion

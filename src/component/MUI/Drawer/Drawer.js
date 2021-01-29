@@ -2,8 +2,8 @@ import React from 'react';
 import Drawer from "@material-ui/core/Drawer";
 
 const MUIDrawer = (props) => {
+
     return(
-        <React.Fragment>
             <Drawer
                 anchor={props.drawerSide}
                 open={props.isOpen}
@@ -11,7 +11,6 @@ const MUIDrawer = (props) => {
             >
                 {props.children}
             </Drawer>
-        </React.Fragment>
     )
     
 }

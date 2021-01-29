@@ -1,28 +1,30 @@
 import classes from './Notice.module.css';
 import React from 'react';
+import CustomizedAccordion from '../../UI/Accordions/CustomizedAccordion'
 import Typography from '../../MUI/Typography/Typography'
 
 const Notices = (props) => {
     const noticesArray = [
-        {heading: "Fee Submission"},
-        {heading: "Form Submission"},
-        {heading: "Regarding Examination"},
-        {heading: "GGWP"},
-        {heading: 'NHK'}
+        {heading: "Fee Submission", description:"Last date to submit fee is 10 Jan"},
+        {heading: "Form Submission", description: "Last date to submit form is 20 Jan"},
+        {heading: "Regarding Examination", description: "Exams will start From 30 June"},
+        {heading: "Online Classes", description: "Classes will Start from 15Jan"},
+        {heading: "Result", description: "Result for Sem 1,3,6 is available at"}
 
     ]
 
-    const notices = noticesArray.map(notice=> <li><Typography>{notice.heading}</Typography></li>)
+    const notices = noticesArray.map((notice,index)=> {
+       return(<CustomizedAccordion key={index} panel={index} heading={notice.heading} description={notice.description} />) 
+    })
 
     const TypographyHeading={variant: "h5" , align:"center"}
 
     return(
         <div className={classes.Notice}>
         <Typography styles={TypographyHeading}>Current  Notices</Typography>
-        <ul>
+        <ul className={classes.List}>
         {notices}
         </ul>
-        <Typography>Go to </Typography>
         </div>
     )
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -15,12 +16,23 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
         
         Icon = props.icon === "HomeIcon" ? <HomeIcon /> : props.icon === "AssessmentIcon" ? <AssessmentIcon /> : props.icon === "ReceiptIcon" ? <ReceiptIcon /> : props.icon === "UpdateIcon" ?  <UpdateIcon /> : props.icon === "AddToQueueIcon" ? <AddToQueueIcon/> : props.icon === "ExitToAppIcon" ? <ExitToAppIcon /> : null
 
+        const useStyles = makeStyles(() => ({
+            Color: {
+                color:'Black',
+            },
+            Margin:{
+                margin:'0 1vw'
+            }
+          }));
+    
+        const classes = useStyles();
+    
         return (
-            <ListItem button>
-            <ListItemIcon>
+            <ListItem button className={classes.Margin}>
+            <ListItemIcon className={classes.Color}>
                {Icon}
             </ListItemIcon>
-            <ListItemText primary={props.name} />
+            <ListItemText className={classes.Color} primary={props.name} />
         </ListItem>
         )
 

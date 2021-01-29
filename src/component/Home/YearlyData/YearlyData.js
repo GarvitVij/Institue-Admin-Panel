@@ -1,23 +1,26 @@
 import React from 'react';
 import Typography from '../../MUI/Typography/Typography'
-import Accordion from '../../MUI/Accordion/Accordion'
+import SimpleAccordion from '../../UI/Accordions/SimpleAccordion'
+import classes from "./YearlyData.module.css";
 
 const YearlyData = (props) => {
-    const typographyHeadingStyle = {variant:"h3", align:"center"}
-    const typographyBatchStyle = {variant: "body1", align:"center"}
+    const typographyHeadingStyle = {variant:"h3", align:"center", gutterBottom:true}
+    const typographyBatchStyle = {variant: "body1", align:"center", gutterBottom:true}
     return(
-        <div>
-            <Typography styles={typographyHeadingStyle}>{props.year}</Typography>
-            <Typography style={typographyBatchStyle}>{props.batch}</Typography>
-            <Accordion heading="Computer Science">
-                <Typography>Morning: 210</Typography>
-                <Typography>Evening: 210</Typography>
-            </Accordion>
-            <Accordion heading="Computer Science"> <Typography>Morning: 210</Typography>
-            <Typography>Evening: 210</Typography></Accordion>
-            <Accordion heading="Computer Science"> <Typography>Morning: 210</Typography>
-            <Typography>Evening: 210</Typography></Accordion>
-
+        <div className={classes.YearlyData}>
+            <Typography styles={typographyHeadingStyle} >{props.year}</Typography>
+            <Typography styles={typographyBatchStyle}>{props.batch}</Typography>
+            {props.branches.map(branch => (
+                <SimpleAccordion display={{display: "block"}} heading={branch.branch} key={branch.branch}>
+                <div className={classes.Flex}>
+                    <Typography>{branch.Morning.timing}</Typography>
+                    <Typography>{`${branch.Morning.paid}/${branch.Morning.total}`}</Typography>
+                    </div><div className={classes.Flex}>
+                    <Typography>{branch.Evening.timing}</Typography>
+                    <Typography>{`${branch.Evening.paid}/${branch.Evening.total}`}</Typography>
+                    </div>    
+                </SimpleAccordion>
+            ))}
         </div>
 
     )
