@@ -1,16 +1,18 @@
 import React from 'react';
-import Drawer from "@material-ui/core/Drawer";
+import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 
 const MUIDrawer = (props) => {
 
     return(
-            <Drawer
+        <React.Fragment>
+            <SwipeableDrawer
                 anchor={props.drawerSide}
                 open={props.isOpen}
                 onClose={props.closeHandler}
             >
                 {props.children}
-            </Drawer>
+            </SwipeableDrawer>
+        </React.Fragment>
     )
     
 }

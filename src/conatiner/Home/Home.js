@@ -4,22 +4,78 @@ import Paper from '../../component/UI/Paper/Paper';
 import Chart from '../../component/Home/Charts/Chart'
 import Notices from '../../component/Home/Notices/Notices'
 import YearlyData from '../../component/Home/YearlyData/YearlyData'
+import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 
+const theme = createMuiTheme({
+    breakpoints: {
+      values: {
+        xs: 0,
+        sm: 600,
+        md: 850,
+        lg: 940,
+        xl: 1200
+      }
+    }
+  });
 
 class Home extends Component {
     state = {
-        options:{},
-        series:[130,123,123],
-        label:['filled', 'Not', 'mayve']
-    }
-
-
-    
-    render(){
-
-
-
-        const Yearlydata = [
+        chartOne: {
+            series:[573,569,238],
+            options:{
+                labels: ['Paid the fee', 'Updated Subjects', 'Not Logged in'],
+                legend:{
+                    position:"right"
+                },
+                colors: ["#1976d2","#388e3c", "#f57c00"]
+                } 
+        },
+        chartTwo:{
+            series:[65464,53156,51656,21335,61656,23355],
+            options:{
+                labels: ['Computer Engineering(M)', 'Computer Engineering(E)','Electronics and Communication Engineering(M)','Electronics and Communication Engineering(E)', 'Automobile engineering(M)','Automobile engineering(E)'],
+                legend:{
+                    position:"right"
+                },
+                colors: ["#1976d2","#1e88e5","#388e3c", "#43a047" ,"#f57c00","#fb8c00"]
+                } 
+        },
+        chartThree:{
+            series: [
+                {name: "Computer Engineering-M",data: [121312,123412,123123]},
+                {name: "Computer Engineering-E",data: [121312,123412,123123]},
+                {name: "Computer Engineering-B",data: [121312,123412,123123]},
+                {name: "Electronics and Communication Engineering-M",data: [121312,123412,123123]},
+                {name: "Electronics and Communication Engineering-E",data: [121312,123412,123123]},
+                {name: "Electronics and Communication Engineering-B",data: [121312,123412,123123]},
+                {name: "Automobile engineering-M",data: [121312,123412,123123]},
+                {name: "Automobile engineering-E",data: [121312,123412,123123]},
+                {name: "Automobile engineering-B",data: [121312,123412,123123]}
+            ],
+            options:{
+                chart:{
+                    type:"bar",
+                    height:200,
+                    stacked: true
+                },
+                plotOptions: {
+                    bar: {
+                        horizontal: true
+                    }
+                },
+                stroke:{
+                    width: 1
+                },
+                xaxis: {
+                    categories: ["Year 1", "year 2", "year 3"]
+                },
+                legend:{
+                    position:"top"
+                },
+                colors: ["#1976d2","#1e88e5","#2196f3","#388e3c", "#43a047","#4caf50" ,"#f57c00","#fb8c00","#ff9800"]
+            }
+        },
+        Yearlydata: [
             {
                 year: "Year 1",
                 batch: "2021-2022",
@@ -157,7 +213,11 @@ class Home extends Component {
             }
         ]
 
+    }
 
+
+    
+    render(){
         const paperStyle={
             border:'2px solid black',
             boxShadow: '10px 10px 4px rgba(0, 0, 0, 0.5)',
@@ -165,65 +225,9 @@ class Home extends Component {
             height: '100%',
             padding: 20
         }
-        const optionss= {
-            series: [
-                {
-                    name: "CS-M",
-                    data: [121312,123412,123123]
-                },
-                {
-                    name: "CS-B",
-                    data: [121312,123412,123123]
-                },
-                {
-                    name: "CS-E",
-                    data: [121312,123412,123123]
-                },
-                {
-                    name: "EE-M",
-                    data: [121312,123412,123123]
-                },
-                {
-                    name: "EE-B",
-                    data: [121312,123412,123123]
-                },
-                {
-                    name: "EE-E",
-                    data: [121312,123412,123123]
-                },{
-                    name: "AU-M",
-                    data: [121312,123412,123123]
-                },{
-                    name: "AU-B",
-                    data: [121312,123412,123123]
-                },{
-                    name: "AU-E",
-                    data: [121312,123412,123123]
-                }
-            ],
-            options:{
-                chart:{
-                    type:"bar",
-                    height:200,
-                    stacked: true
-                },
-                plotOptions: {
-                    bar: {
-                        horizontal: true
-                    }
-                },
-                stroke:{
-                    width: 1
-                },
-                xaxis: {
-                    categories: ["Year 1", "year 2", "year 3"]
-                }
-            }
-            
-        } 
 
-        const yearlyDataElement = Yearlydata.map(yearData => (
-            <Grid item sm={4}  xs={12} key={yearData.year}>
+        const yearlyDataElement = this.state.Yearlydata.map(yearData => (
+            <Grid item md={4} xs={12}  key={yearData.year}>
                 <Paper extraStyles={{...paperStyle, ...{display:'flex', justifyContent:'center'}}} elevation={2} bgcolor="white">  
                 <YearlyData year={yearData.year} batch={yearData.batch} branches={yearData.branches} />
                 </Paper>
@@ -232,37 +236,30 @@ class Home extends Component {
 
         return (
         <div>
-            {/*Charts Grid*/}
+            <MuiThemeProvider theme={theme} >
             <Grid justify="space-between" alignItems="center" container spacing={3}>
-              <Grid  item sm={12} md={6}>
+              <Grid  item xs={12} lg={6}>
                 <Paper extraStyles={paperStyle} elevation={2} bgcolor="white">
-                    <Chart options={this.state.options} series={this.state.series} type="pie" width={200} height={200} />
+                    <Chart options={this.state.chartOne.options} series={this.state.chartOne.series} type="pie" width={200} height={200} />
                 </Paper>
               </Grid>
-              <Grid  item sm={12} md={6}>
+              <Grid  item xs={12} lg={6}>
               <Paper extraStyles={paperStyle} elevation={2} bgcolor="white">
-                  <Chart options={this.state.options} series={[123,0,123,123,123,123]} type="donut" width={200} height={200} />
+                  <Chart options={this.state.chartTwo.options} series={this.state.chartTwo.series} type="donut" width={200} height={200} />
               </Paper>
             </Grid>
+           
             </Grid>
-            {/*Bigger Pie*/}
             <Grid justify="space-between" alignItems="center" container spacing={3}>
             <Grid item xs={12} >
             <Paper extraStyles={paperStyle} elevation={2} bgcolor="white">
-                <Chart options={optionss.options} series={optionss.series} type="bar" height={300}  />
+                <Chart options={this.state.chartThree.options} series={this.state.chartThree.series} type="bar" height={300}  />
             </Paper>
           </Grid>
           </Grid>
-
-            {/*Yearly Data Grid*/}
             <Grid justify="space-between" alignItems="center" container spacing={3}>
                 {yearlyDataElement}
           </Grid>
-
-          
-          {/*Notices*/}
-
-
         <Grid alignItems="center" container spacing={3}>
             <Grid item xs={12}>
                 <Paper extraStyles={paperStyle} elevation={2} bgcolor="white">
@@ -270,6 +267,7 @@ class Home extends Component {
                 </Paper>
             </Grid>
         </Grid>
+        </MuiThemeProvider>
         </div>
         )
     }
