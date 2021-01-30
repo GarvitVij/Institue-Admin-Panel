@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import Grid from '@material-ui/core/Grid';
-import Paper from '../../component/UI/Paper/Paper';
+import Grid from '../../component/UI/Grid/Grid'
 import Chart from '../../component/Home/Charts/Chart'
 import Notices from '../../component/Home/Notices/Notices'
 import YearlyData from '../../component/Home/YearlyData/YearlyData'
@@ -28,12 +27,12 @@ class Home extends Component {
                     position:"right"
                 },
                 colors: ["#1976d2","#388e3c", "#f57c00"]
-                } 
+                }
         },
         chartTwo:{
             series:[65464,53156,51656,21335,61656,23355],
             options:{
-                labels: ['Computer Engineering(M)', 'Computer Engineering(E)','Electronics and Communication Engineering(M)','Electronics and Communication Engineering(E)', 'Automobile engineering(M)','Automobile engineering(E)'],
+                labels: ['CS (M)', 'CS(E)','E & C(M)','E & C(E)', 'AM (M)','AM(E)'],
                 legend:{
                     position:"right"
                 },
@@ -215,17 +214,8 @@ class Home extends Component {
 
     }
 
-
     
     render(){
-        const paperStyle={
-            border:'2px solid black',
-            boxShadow: '10px 10px 4px rgba(0, 0, 0, 0.5)',
-            borderRadius: '40px',
-            height: '100%',
-            padding: 20
-        }
-
         const yearlyDataElement = this.state.Yearlydata.map(yearData => (
             <Grid item md={4} xs={12}  key={yearData.year}>
                 <Paper extraStyles={{...paperStyle, ...{display:'flex', justifyContent:'center'}}} elevation={2} bgcolor="white">  
@@ -238,14 +228,17 @@ class Home extends Component {
         <div>
             <MuiThemeProvider theme={theme} >
             <Grid justify="space-between" alignItems="center" container spacing={3}>
+                <Grid gridLayout={xs=12 , lg=6}>
+                    <Chart options={this.state.chartOne.options} heading="Student who" series={this.state.chartOne.series} type="pie" width={200} height={200} />
+                </Grid>
               <Grid  item xs={12} lg={6}>
                 <Paper extraStyles={paperStyle} elevation={2} bgcolor="white">
-                    <Chart options={this.state.chartOne.options} series={this.state.chartOne.series} type="pie" width={200} height={200} />
+                    
                 </Paper>
               </Grid>
               <Grid  item xs={12} lg={6}>
               <Paper extraStyles={paperStyle} elevation={2} bgcolor="white">
-                  <Chart options={this.state.chartTwo.options} series={this.state.chartTwo.series} type="donut" width={200} height={200} />
+                  <Chart options={this.state.chartTwo.options} heading="Fees paid by each branch" series={this.state.chartTwo.series} type="donut" width={200} height={200} />
               </Paper>
             </Grid>
            
@@ -253,7 +246,7 @@ class Home extends Component {
             <Grid justify="space-between" alignItems="center" container spacing={3}>
             <Grid item xs={12} >
             <Paper extraStyles={paperStyle} elevation={2} bgcolor="white">
-                <Chart options={this.state.chartThree.options} series={this.state.chartThree.series} type="bar" height={300}  />
+                <Chart options={this.state.chartThree.options} heading="Detailed Report" series={this.state.chartThree.series} type="bar" height={300}  />
             </Paper>
           </Grid>
           </Grid>
