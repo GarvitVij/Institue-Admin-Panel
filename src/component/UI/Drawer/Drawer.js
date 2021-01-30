@@ -1,6 +1,7 @@
 import React from 'react';
 import MUIDrawer from '../../MUI/Drawer/Drawer'
 import Lists from '../Lists/Lists'
+import PropTypes from 'prop-types';
 
 const Drawer = (props) => (
     <MUIDrawer
@@ -11,5 +12,10 @@ const Drawer = (props) => (
     <Lists/>
     </MUIDrawer>
 )
+
+Drawer.propTypes = {
+    isDrawerOpen: PropTypes.bool,
+    drawerCloseHandler: PropTypes.func
+}
 
 export default Drawer

@@ -3,7 +3,7 @@ import classes from './Layout.module.css'
 import AppBar from "../../component/MUI/AppBar/AppBar";
 import Drawer from '../../component/UI/Drawer/Drawer'
 import Paper from '../../component/MUI/Paper/Paper'
-import Home from '../../conatiner/Home/Home'
+import Home from '../../container/Home/Home'
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 
 const theme = createMuiTheme({
@@ -22,6 +22,38 @@ const theme = createMuiTheme({
           lg: 940,
           xl: 1200
         }
+      },
+      palette: {
+          primary: {
+              light: '#6B58DF',
+              main: '#211665',
+              dark: '#0A0528',
+          },
+          secondary: {
+              light: '#f5f5f5',
+              main: '#ffffff',
+              dark: '#000000'
+          },
+          transparency: {
+              light: 'rgba(255,255,255,0.58)',
+              main: 'rgba(255,255,255,0.68)',
+              dark: 'rgba(255,255,255,0.88)'
+          },
+          computerEngineering: {
+            light:'#2196f3',
+            main: '#1e88e5',
+            dark: '#1976d2',
+          },
+          electricalEngineering: {
+            light: '#4caf50',
+            main: '#43a047',
+            dark: '#388e3c',
+          },
+          automobileEngineering: {
+            light: '#ff9800',
+            main: '#fb8c00',
+            dark: '#f57c00',
+          }
       }
   });
 

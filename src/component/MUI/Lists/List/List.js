@@ -9,6 +9,7 @@ import ReceiptIcon from '@material-ui/icons/Receipt';
 import UpdateIcon from '@material-ui/icons/Update';
 import AddToQueueIcon from '@material-ui/icons/AddToQueue';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import PropTypes from 'prop-types';
 
    const MUIList = (props) => {
 
@@ -16,9 +17,9 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
         
         Icon = props.icon === "HomeIcon" ? <HomeIcon /> : props.icon === "AssessmentIcon" ? <AssessmentIcon /> : props.icon === "ReceiptIcon" ? <ReceiptIcon /> : props.icon === "UpdateIcon" ?  <UpdateIcon /> : props.icon === "AddToQueueIcon" ? <AddToQueueIcon/> : props.icon === "ExitToAppIcon" ? <ExitToAppIcon /> : null
 
-        const useStyles = makeStyles(() => ({
+        const useStyles = makeStyles((theme) => ({
             Color: {
-                color:'Black',
+                color:theme.palette.secondary.dark,
             },
             Margin:{
                 margin:'0 1vw'
@@ -35,7 +36,11 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
             <ListItemText className={classes.Color} primary={props.name} />
         </ListItem>
         )
+    }
 
-   }
+MUIList.propTypes = {
+    icon: PropTypes.string,
+    name: PropTypes.string
+}
 
 export default MUIList

@@ -5,9 +5,10 @@ import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
+import PropTypes from 'prop-types';
 
 
-const MUIMenuAppBar = (props) => {
+const MenuAppBar = (props) => {
 
     const useStyles = makeStyles((theme) => ({
         root: {
@@ -22,10 +23,10 @@ const MUIMenuAppBar = (props) => {
         },
         appBarIconSettings: {
             fontSize:'3rem',
-            color: process.env.REACT_APP_ICON_COLOR
+            color: theme.palette.secondary.dark
         },
         appBarColor: {
-            background: process.env.REACT_APP_SECONDAY_COLOR
+            background: theme.palette.secondary.main
         }
       
           }
@@ -56,4 +57,8 @@ const MUIMenuAppBar = (props) => {
     );
 }
 
-export default MUIMenuAppBar
+MenuAppBar.propTypes  = {
+    drawerOpenhandler: PropTypes.func
+}
+
+export default MenuAppBar

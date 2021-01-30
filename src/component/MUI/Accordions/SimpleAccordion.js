@@ -5,6 +5,7 @@ import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '../Typography/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import PropTypes from 'prop-types';
 
 const SimpleAccordion = (props) => {
     
@@ -18,12 +19,12 @@ const SimpleAccordion = (props) => {
         ...props.iconStyle
     },
     AccordionColor: {
-        backgroundColor:"#6B58DF",
-        color:"White"
+        backgroundColor:theme.palette.primary.light,
+        color:theme.palette.secondary.main
     },
     AccordionDeatils:{
-        backgroundColor:"white",
-        color:"black",
+        backgroundColor:theme.palette.secondary.main,
+        color:theme.palette.secondary.dark,
         ...props.borders,
         ...props.display
     },
@@ -48,5 +49,16 @@ const SimpleAccordion = (props) => {
         </div>
       );  
 }
+
+SimpleAccordion.propTypes = {
+    height: PropTypes.number,
+    marginBottom: PropTypes.string,
+    iconStyle: PropTypes.object,
+    borders: PropTypes.object,
+    display: PropTypes.object,
+    heading: PropTypes.string,
+    children: PropTypes.arrayOf(PropTypes.element)
+}
+
 
 export default SimpleAccordion

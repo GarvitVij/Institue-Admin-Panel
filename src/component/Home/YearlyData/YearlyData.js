@@ -2,6 +2,7 @@ import React from 'react';
 import Typography from '../../MUI/Typography/Typography'
 import SimpleAccordion from '../../UI/Accordions/SimpleAccordion'
 import classes from "./YearlyData.module.css";
+import PropTypes from 'prop-types';
 
 const YearlyData = (props) => {
     const typographyHeadingStyle = {variant:"h3", align:"center", gutterBottom:true}
@@ -24,6 +25,12 @@ const YearlyData = (props) => {
         </div>
 
     )
+}
+
+YearlyData.propTypes = {
+    year: PropTypes.string,
+    branch: PropTypes.string,
+    branches: PropTypes.array
 }
 
 export default YearlyData

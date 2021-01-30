@@ -15,8 +15,8 @@ const MUIAvatar = (props) => {
         large: {
           width: theme.spacing(10),
           height: theme.spacing(10),
-          background: 'white',
-          color:'black'
+          background: theme.palette.secondary.main,
+          color:theme.palette.secondary.dark
         },
         center:{
             display:'flex',

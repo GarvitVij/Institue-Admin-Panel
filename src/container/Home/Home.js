@@ -223,14 +223,14 @@ class Home extends Component {
         return (
         <div>
             <Grid justify="space-between" alignItems="center" container spacing={3}>
-              <Grid  item xs={12} lg={6}>
+              <Grid item xs={12} lg={6}>
                 <Paper extraStyles={paperStyle} elevation={2} bgcolor="white">
-                    <Chart options={this.state.chartOne.options} heading="Student who" series={this.state.chartOne.series} type="pie" width={200} height={200} />
+                    <Chart options={this.state.chartOne.options} heading="Student who" series={this.state.chartOne.series} type="pie" height={200} />
                 </Paper>
               </Grid>
               <Grid  item xs={12} lg={6}>
               <Paper extraStyles={paperStyle} elevation={2} bgcolor="white">
-                  <Chart options={this.state.chartTwo.options} heading="Fees paid by each branch" series={this.state.chartTwo.series} type="donut" width={200} height={200} />
+                  <Chart options={this.state.chartTwo.options} heading="Fees paid by each branch" series={this.state.chartTwo.series} type="donut" height={200} />
               </Paper>
             </Grid>
            

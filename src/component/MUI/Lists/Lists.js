@@ -1,6 +1,7 @@
 import React from 'react';
 import List from '@material-ui/core/List';
 import MUIList from './List/List'
+import PropTypes from 'prop-types';
 
 const MUILists = (props) => {
     return(
@@ -14,5 +15,11 @@ const MUILists = (props) => {
         </div>
     )
 }
+
+MUILists.propTypes = {
+    children: PropTypes.element.isRequired,
+    list: PropTypes.array
+}
+
 
 export default MUILists

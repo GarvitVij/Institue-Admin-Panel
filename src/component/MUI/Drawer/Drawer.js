@@ -1,5 +1,6 @@
 import React from 'react';
 import Drawer from '@material-ui/core/Drawer';
+import PropTypes from 'prop-types';
 
 const MUIDrawer = (props) => {
 
@@ -14,7 +15,13 @@ const MUIDrawer = (props) => {
             </Drawer>
         </React.Fragment>
     )
-    
 }
+
+MUIDrawer.propTypes = {
+    anchor: PropTypes.string,
+    open: PropTypes.bool,
+    onClose: PropTypes.func
+}
+
 
 export default MUIDrawer

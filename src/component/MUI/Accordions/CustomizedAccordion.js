@@ -4,12 +4,13 @@ import MuiAccordion from '@material-ui/core/Accordion';
 import MuiAccordionSummary from '@material-ui/core/AccordionSummary';
 import MuiAccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '../Typography/Typography';
+import PropTypes from 'prop-types';
 
-const Accordion = withStyles({
+const Accordion = withStyles((theme) => ({
   root: {
     border: '1px solid rgba(0, 0, 0, .125)',
-    backgroundColor: '#6B58DF',
-    color:'white',
+    backgroundColor: theme.palette.primary.light,
+    color:theme.palette.secondary.main,
     margin:'1% 0',
     borderRadius:'20px',
     boxShadow: 'none',
@@ -24,7 +25,7 @@ const Accordion = withStyles({
     },
   },
   expanded: {},
-})(MuiAccordion);
+}))(MuiAccordion);
 
 const AccordionSummary = withStyles({
   root: {
@@ -46,8 +47,8 @@ const AccordionSummary = withStyles({
 const AccordionDetails = withStyles((theme) => ({
   root: {
     padding: theme.spacing(2),
-    backgroundColor: 'white',
-    color:'black',
+    backgroundColor: theme.palette.secondary.main,
+    color:theme.palette.secondary.dark,
     borderRadius:'20px',
     borderTopLeftRadius:0,
     borderTopRightRadius:0,
@@ -77,4 +78,10 @@ export default function CustomizedAccordions(props) {
       </Accordion>
     </div>
   );
+}
+
+CustomizedAccordions.propTypes = {
+    panel: PropTypes.number,
+    heading: PropTypes.string,
+    description : PropTypes.string
 }
