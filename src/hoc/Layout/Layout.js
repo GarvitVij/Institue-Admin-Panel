@@ -8,6 +8,7 @@ import AppBar from "../../component/MUI/AppBar/AppBar";
 import Drawer from '../../component/UI/Drawer/Drawer'
 import Paper from '../../component/MUI/Paper/Paper'
 import Home from '../../container/Home/Home'
+import Logs from '../../container/Logs/Logs'
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 
 const theme = createMuiTheme({
@@ -82,8 +83,8 @@ class AdminPanelLayout extends Component {
            <div className={classes.Layout}>
                 <AppBar drawerOpenhandler={this.onDrawerOpenHandler} />
                 <Drawer drawerCloseHandler={this.onDrawerCloseHandler} isDrawerOpen={this.state.isDrawerOpen}/>
-                <Paper bgcolor="rgba(255,255,255,0.68)" elevation={3}>
-                    <Home />
+                <Paper extraStyles={{minHeight:'86vh'}} bgcolor="rgba(255,255,255,0.68)" elevation={3}>
+                    <Logs />
                 </Paper>
            </div>
         </MuiThemeProvider>
