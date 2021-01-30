@@ -17,13 +17,15 @@ const MUIMenuAppBar = (props) => {
           marginRight: theme.spacing(2),
         },
         appBarSettings: {
-            ...props.appBarSettings
+            height: '10vh',
+            justifyContent: 'space-between'
         },
         appBarIconSettings: {
-            ...props.appBarIconSettings
+            fontSize:'3rem',
+            color: process.env.REACT_APP_ICON_COLOR
         },
         appBarColor: {
-            ...props.appBarColor
+            background: process.env.REACT_APP_SECONDAY_COLOR
         }
       
           }
@@ -36,7 +38,7 @@ const MUIMenuAppBar = (props) => {
         <div className={classes.root}>
             <AppBar className={classes.appBarColor} position="static">
                 <Toolbar className={classes.appBarSettings}>
-                    <IconButton onClick={props.clicked} edge="start" className={classes.menuButton}  aria-label="Burger Menu">
+                    <IconButton onClick={props.drawerOpenhandler} edge="start" className={classes.menuButton}  aria-label="Burger Menu">
                         <MenuIcon className={classes.appBarIconSettings} />
                     </IconButton>
                     <div>

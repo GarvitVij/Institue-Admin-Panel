@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import classes from './Layout.module.css'
-import AppBar from "../../component/UI/AppBar/AppBar";
+import AppBar from "../../component/MUI/AppBar/AppBar";
 import Drawer from '../../component/UI/Drawer/Drawer'
-import Paper from '../../component/UI/Paper/Paper'
+import Paper from '../../component/MUI/Paper/Paper'
 import Home from '../../conatiner/Home/Home'
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 

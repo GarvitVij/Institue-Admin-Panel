@@ -21,7 +21,7 @@ const MUIAvatar = (props) => {
         center:{
             display:'flex',
             justifyContent:'center',
-            margin: props.margin
+            margin: '5vh 0'
         }
     }));
     

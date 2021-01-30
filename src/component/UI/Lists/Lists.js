@@ -1,6 +1,6 @@
 import React from 'react';
 import MUILists from '../../MUI/Lists/Lists'
-import Avatar from '../Avatar/Avatar'
+import Avatar from '../../MUI/Avatar/Avatar'
 
 const listItems = [
     {
