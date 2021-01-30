@@ -1,21 +1,9 @@
 import React, { Component } from 'react';
-import Grid from '../../component/UI/Grid/Grid'
+import Grid from '@material-ui/core/Grid';
+import Paper from '../../component/UI/Paper/Paper';
 import Chart from '../../component/Home/Charts/Chart'
 import Notices from '../../component/Home/Notices/Notices'
 import YearlyData from '../../component/Home/YearlyData/YearlyData'
-import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
-
-const theme = createMuiTheme({
-    breakpoints: {
-      values: {
-        xs: 0,
-        sm: 600,
-        md: 850,
-        lg: 940,
-        xl: 1200
-      }
-    }
-  });
 
 class Home extends Component {
     state = {
@@ -216,6 +204,14 @@ class Home extends Component {
 
     
     render(){
+        const paperStyle={
+            border:'2px solid black',
+            boxShadow: '10px 10px 4px rgba(0, 0, 0, 0.5)',
+            borderRadius: '40px',
+            height: '100%',
+            padding: 20
+        }
+
         const yearlyDataElement = this.state.Yearlydata.map(yearData => (
             <Grid item md={4} xs={12}  key={yearData.year}>
                 <Paper extraStyles={{...paperStyle, ...{display:'flex', justifyContent:'center'}}} elevation={2} bgcolor="white">  
@@ -226,14 +222,10 @@ class Home extends Component {
 
         return (
         <div>
-            <MuiThemeProvider theme={theme} >
             <Grid justify="space-between" alignItems="center" container spacing={3}>
-                <Grid gridLayout={xs=12 , lg=6}>
-                    <Chart options={this.state.chartOne.options} heading="Student who" series={this.state.chartOne.series} type="pie" width={200} height={200} />
-                </Grid>
               <Grid  item xs={12} lg={6}>
                 <Paper extraStyles={paperStyle} elevation={2} bgcolor="white">
-                    
+                    <Chart options={this.state.chartOne.options} heading="Student who" series={this.state.chartOne.series} type="pie" width={200} height={200} />
                 </Paper>
               </Grid>
               <Grid  item xs={12} lg={6}>
@@ -260,7 +252,6 @@ class Home extends Component {
                 </Paper>
             </Grid>
         </Grid>
-        </MuiThemeProvider>
         </div>
         )
     }

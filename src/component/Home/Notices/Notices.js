@@ -1,6 +1,6 @@
 import classes from './Notice.module.css';
 import React from 'react';
-import CustomizedAccordion from '../../UI/Accordions/CustomizedAccordion'
+import CustomizedAccordion from '../../MUI/Accordions/CustomizedAccordion'
 import Typography from '../../MUI/Typography/Typography'
 
 const Notices = (props) => {

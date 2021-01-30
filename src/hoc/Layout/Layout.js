@@ -4,7 +4,26 @@ import AppBar from "../../component/UI/AppBar/AppBar";
 import Drawer from '../../component/UI/Drawer/Drawer'
 import Paper from '../../component/UI/Paper/Paper'
 import Home from '../../conatiner/Home/Home'
+import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 
+const theme = createMuiTheme({
+    typography: {
+        "fontFamily": `'Ubuntu', sans-serif;`,
+        "fontSize": 14,
+        "fontWeightLight": 300,
+        "fontWeightRegular": 400,
+        "fontWeightMedium": 500
+       },
+       breakpoints: {
+        values: {
+          xs: 0,
+          sm: 600,
+          md: 850,
+          lg: 940,
+          xl: 1200
+        }
+      }
+  });
 
 
 class AdminPanelLayout extends Component {
@@ -23,6 +42,7 @@ class AdminPanelLayout extends Component {
 
    render(){
        return (
+        <MuiThemeProvider theme={theme}>
            <div className={classes.Layout}>
                 <AppBar drawerOpenhandler={this.onDrawerOpenHandler} />
                 <Drawer drawerCloseHandler={this.onDrawerCloseHandler} isDrawerOpen={this.state.isDrawerOpen}/>
@@ -30,6 +50,7 @@ class AdminPanelLayout extends Component {
                     <Home />
                 </Paper>
            </div>
+        </MuiThemeProvider>
            )
    }
 }
