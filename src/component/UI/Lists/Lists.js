@@ -17,8 +17,11 @@ const listItems = [
         label: "Receipt Update",
         icon: "ReceiptIcon"
     }, {
-        label: "Updates",
+        label: "Site Updates",
         icon: "UpdateIcon"
+    }, {
+        label: "Student Updates",
+        icon: "SupervisorAccountIcon"
     }, {
         label: "Logs",
         icon: "AddToQueueIcon"
