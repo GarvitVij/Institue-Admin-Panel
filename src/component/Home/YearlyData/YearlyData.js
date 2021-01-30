@@ -1,3 +1,9 @@
+/* 
+    Description: This is a basic layout for a yearlyData Summary. 
+    It is itrated with an array to create more summary component
+    DEFAULT_NAMED_NOTE: Docs import it as Accordion, But I imported it as SimpleAccordion
+*/
+
 import React from 'react';
 import Typography from '../../MUI/Typography/Typography'
 import SimpleAccordion from '../../UI/Accordions/SimpleAccordion'

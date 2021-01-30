@@ -1,3 +1,7 @@
+/* 
+    Description: This component provide custom settings to Material UI List and provide data to it
+*/
+
 import React from 'react';
 import MUILists from '../../MUI/Lists/Lists'
 import Avatar from '../../MUI/Avatar/Avatar'

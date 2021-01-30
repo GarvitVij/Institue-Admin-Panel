@@ -1,3 +1,8 @@
+/* 
+    Description : Avatar Component[by Default, an icon. if Image Url is given. it would show the image instead], created with the help of Material ui
+    Docs: https://material-ui.com/components/avatars/
+*/
+
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';

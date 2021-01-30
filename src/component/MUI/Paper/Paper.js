@@ -1,9 +1,14 @@
+/* 
+    Description: Its a container, which holds sub elements, created with the help of material Ui,
+    DOCS: https://material-ui.com/components/paper/
+*/
+
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import PropTypes from 'prop-types';
 
-export default function MUIPaper(props) {
+const MUIPaper = (props) => {
 
     const useStyles = makeStyles((theme) => ({
         root: {
@@ -38,3 +43,5 @@ MUIPaper.propTypes = {
     elevation: PropTypes.number,
     children: PropTypes.element.isRequired
 }
+
+export default MUIPaper

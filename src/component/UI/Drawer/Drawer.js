@@ -1,3 +1,7 @@
+/* 
+    Description: This component provide custom settings to Material UI Drawer
+*/
+
 import React from 'react';
 import MUIDrawer from '../../MUI/Drawer/Drawer'
 import Lists from '../Lists/Lists'

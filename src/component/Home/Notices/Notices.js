@@ -1,3 +1,9 @@
+/* 
+    Description : This Component creates a list of notices.
+    TODO: GET notices from backend
+    DEFAULT_NAMED_NOTE: Docs import it as Accordion, But I imported it as CustomizedAccordion
+*/
+
 import classes from './Notice.module.css';
 import React from 'react';
 import CustomizedAccordion from '../../MUI/Accordions/CustomizedAccordion'

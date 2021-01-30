@@ -1,3 +1,10 @@
+/* 
+    Description: List Items that are to be displayed in Drawer,
+    Note that: it is creates a single list item, Ittrate over an array to create Multiple Items
+    created with the help of Material Ui
+    DOCS: https://material-ui.com/components/lists/
+*/
+
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ListItem from '@material-ui/core/ListItem';

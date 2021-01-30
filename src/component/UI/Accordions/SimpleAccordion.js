@@ -1,3 +1,7 @@
+/* 
+    Description: This component provide custom settings to Material UI Simple Accordion
+*/
+
 import React from 'react';
 import Accordion from '../../MUI/Accordions/SimpleAccordion'
 

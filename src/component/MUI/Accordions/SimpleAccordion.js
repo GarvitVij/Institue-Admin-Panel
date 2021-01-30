@@ -1,3 +1,8 @@
+/* 
+    Description : Simple Accordion, created with the help of Material ui
+    Docs: https://material-ui.com/components/accordion/
+*/
+
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Accordion from '@material-ui/core/Accordion';

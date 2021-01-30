@@ -1,3 +1,8 @@
+/* 
+    Description: Temporary Drawer, created with the help of Material UI,
+    DOCS: https://material-ui.com/components/app-bar/
+*/
+
 import React from 'react';
 import Drawer from '@material-ui/core/Drawer';
 import PropTypes from 'prop-types';

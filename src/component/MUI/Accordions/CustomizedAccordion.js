@@ -1,3 +1,8 @@
+/* 
+    Description : Customized Accordion, created with the help of Material ui
+    Docs: https://material-ui.com/components/accordion/
+*/
+
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import MuiAccordion from '@material-ui/core/Accordion';
@@ -57,7 +62,7 @@ const AccordionDetails = withStyles((theme) => ({
   },
 }))(MuiAccordionDetails);
 
-export default function CustomizedAccordions(props) {
+const CustomizedAccordions = (props) => {
   const [expanded, setExpanded] = React.useState(props.panel);
 
   const handleChange = (panel) => (event, newExpanded) => {
@@ -85,3 +90,5 @@ CustomizedAccordions.propTypes = {
     heading: PropTypes.string,
     description : PropTypes.string
 }
+
+export default CustomizedAccordions

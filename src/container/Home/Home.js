@@ -1,3 +1,8 @@
+/*  
+    Description: HOME CONTAINER, PROVIDES DATA TO EVERY HOME COMPONENT.
+    TODO: INTREACT WITH REDUX, CLEAN UP OF STATE WITH REDUX AND POSSIBLY MAKE IT SMALL.
+*/
+
 import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Paper from '../../component/MUI/Paper/Paper';

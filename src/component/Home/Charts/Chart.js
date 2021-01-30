@@ -1,4 +1,10 @@
-import ApexChart from 'react-apexcharts'
+/* 
+    Description : This Component uses ApexCharts libarary, to create Charts.
+    Docs: https://apexcharts.com/
+    DEFAULT_NAMED_NOTE: Docs import it as Chart, But I imported it as ApexChart, So i could use (var=>) Chart as export
+*/
+
+import ApexChart from 'react-apexcharts'       
 import React from 'react';
 import Typography from '../../MUI/Typography/Typography'
 import PropTypes from 'prop-types';

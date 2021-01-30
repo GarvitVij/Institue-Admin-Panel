@@ -1,7 +1,12 @@
+/* 
+    Description: this element contains the text that has to be displayed, Created with the help of material UI
+    DOCS: https://material-ui.com/components/typography/
+    DEFAULT_NAMED_NOTE: Docs import it as Typography, But I imported it as Text, so I could use (var=>) Typography in export
+*/
+
 import React from 'react';
 import Text from '@material-ui/core/Typography'; 
 import PropTypes from 'prop-types';
-//This is Typography but becuase it was a default export i exportted it as Text
 
 const Typography = (props) => (
     <Text {...props.styles} >{props.children}</Text>

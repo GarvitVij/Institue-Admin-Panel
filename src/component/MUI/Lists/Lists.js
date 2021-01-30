@@ -1,3 +1,7 @@
+/* 
+    Description: It is the component, where Each list item is made and displayed.
+*/
+
 import React from 'react';
 import List from '@material-ui/core/List';
 import MUIList from './List/List'

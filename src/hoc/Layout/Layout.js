@@ -1,3 +1,7 @@
+/* 
+    Description : Basic Layout for Each Component, after Login
+*/
+
 import React, { Component } from 'react';
 import classes from './Layout.module.css'
 import AppBar from "../../component/MUI/AppBar/AppBar";
