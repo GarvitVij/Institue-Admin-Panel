@@ -1,14 +1,15 @@
 import React from 'react';
 import ButtonGroup from '../../MUI/ButtonGroup/ButtonGroup'
 import SelectButton from '../../MUI/Select/Select'
-import DateAndTimePicker from '../../MUI/DateTimePicker/DateTimePicker'
+import DatePicker from '../../MUI/DateTimePicker/Date/Date'
+import TimePicker from '../../MUI/DateTimePicker/Time/Time'
 import Button from '@material-ui/core/Button';
 import Modal from '../../MUI/Modal/Modal'
 
 const LogControls = (props) => {
     const byCode = {
         title: 'By Code',
-        id:'ByCode',
+        id:'byCode',
         options: [
             {value: 200, text: '200'},
             {value: 400, text: '400'},
@@ -19,7 +20,7 @@ const LogControls = (props) => {
 
     const byTask = {
         title: 'By Task',
-        id:'ByTask',
+        id:'byTask',
         options: [
             {value: 'createStudent', text: 'Create Student'},
             {value: 'deleteBatchStudents', text: 'Delete Batch Students'},
@@ -30,24 +31,25 @@ const LogControls = (props) => {
 
     const byAdmin = {
         title: 'By Admin',
-        id:'ByAdmin',
+        id:'byAdmin',
         options: [
             {value: 'adminOne', text: 'Admin One'},
             {value: 'adminTwo', text: 'Admin Two'},
             {value: 'adminThree', text: 'Admin Three'},
         ]
     }
-    
+
     return(
         <Modal heading="Settings">
-        <ButtonGroup>
-            <SelectButton {...byCode} clicked={props.clicked} value={props.values.byCode}/>
-            <SelectButton {...byTask} clicked={props.clicked} value={props.values.byTask}/>
-            <SelectButton {...byAdmin} clicked={props.clicked} value={props.values.byAdmin}/>
-            <DateAndTimePicker clicked={props.clicked}/>
-            <Button style={{margin:'3%'}} variant="contained" color="primary">Sort</Button>
-            <Button style={{margin:'3%'}} variant="contained" color="primary">Search</Button>
-        </ButtonGroup>
+            <ButtonGroup>
+                <SelectButton {...byCode} clicked={props.filterHandler}  value={props.selectDefaultValues.byCode}/>
+                <SelectButton {...byTask} clicked={props.filterHandler} value={props.selectDefaultValues.byTask}/>
+                <SelectButton {...byAdmin} clicked={props.filterHandler} value={props.selectDefaultValues.byAdmin}/>
+                <DatePicker clicked={props.timeHandler} />
+                <TimePicker clicked={props.timeHandler} />
+                <Button style={{margin:'3%'}} variant="contained" color="primary">Sort</Button>
+                <Button style={{margin:'3%'}} variant="contained" color="primary">Search</Button>
+            </ButtonGroup>
         </Modal>
     )  
 }

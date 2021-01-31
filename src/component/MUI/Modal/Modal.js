@@ -13,7 +13,6 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     backgroundColor: theme.palette.background.paper,
-    border: '2px solid #fff',
     borderRadius:'25px',
     margin:'10%',
     boxShadow: theme.shadows[5],
@@ -27,7 +26,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function TransitionsModal(props) {
+
   const classes = useStyles();
+  
   const [open, setOpen] = React.useState(false);
 
   const handleOpen = () => {
@@ -40,27 +41,27 @@ export default function TransitionsModal(props) {
 
   return (
     <div className={classes.button}>
-      <Button  color="primary" variant="contained" onClick={handleOpen}>
-        {props.heading}
-      </Button>
-      <Modal
-        aria-labelledby="transition-modal"
-        aria-describedby="transition-modal"
-        className={classes.modal}
-        open={open}
-        onClose={handleClose}
-        closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 500,
-        }}
-      >
-        <Fade in={open}>
-          <div className={classes.paper}>
-         {props.children}
-          </div>
-        </Fade>
-      </Modal>
+        <Button color="primary" variant="contained" onClick={handleOpen}>
+            {props.heading}
+        </Button>
+        <Modal
+            aria-labelledby="modal"
+            aria-describedby="modal"
+            className={classes.modal}
+            open={open}
+            onClose={handleClose}
+            closeAfterTransition
+            BackdropComponent={Backdrop}
+            BackdropProps={{
+                timeout: 500,
+            }}
+        >
+            <Fade in={open}>
+                <div className={classes.paper}>
+                    {props.children}
+                </div>
+            </Fade>
+        </Modal>
     </div>
   );
 }

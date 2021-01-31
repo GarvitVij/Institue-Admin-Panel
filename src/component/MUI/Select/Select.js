@@ -16,25 +16,26 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 const SelectButton = (props) => {
+
     const classes = useStyles();
 
     return (
         <FormControl className={classes.formControl}>
-        <InputLabel id={props.id}>{props.title}</InputLabel>
+            <InputLabel id={props.id}>{props.title}</InputLabel>
             <Select
-              labelId={props.id}
-              id={props.id}
-              value={props.value}
-              onChange={props.clicked}
+                labelId={props.id}
+                id={props.id}
+                value={props.value || ''}
+                className={classes.select}
+                onChange={(event) => props.clicked(props.id, event.target.value)}
             >
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
-              {props.options.map(option => (<MenuItem key={option.value} value={option.value}>{option.text}</MenuItem>))}
+                <MenuItem value="">
+                    <em>None</em>
+                </MenuItem>
+                {props.options.map(option => (<MenuItem key={option.value} value={option.value}>{option.text}</MenuItem>))}
             </Select>
-            </FormControl>
+        </FormControl>
     )
-   
 }
 
 export default SelectButton
