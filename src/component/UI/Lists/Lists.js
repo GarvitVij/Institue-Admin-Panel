@@ -14,7 +14,7 @@ const listItems = [
         label: "Detailed Report",
         icon: "AssessmentIcon"
     }, {
-        label: "Receipt Update",
+        label: "Receipts",
         icon: "ReceiptIcon"
     }, {
         label: "Site Updates",

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Typography from '../../component/MUI/Typography/Typography';
 import LogsList from '../../component/Logs/LogsList'
 import LogControls from '../../component/Logs/LogControls/LogControls'
-import moment from 'moment'
 
 class Logs extends Component {
     state = {
