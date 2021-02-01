@@ -45,7 +45,7 @@ const SimpleAccordion = (props) => {
               aria-controls="panel1a-content"
               id="panel1a-header"
             >
-              <Typography>{props.heading}</Typography>
+              <Typography styles={props.typographyStyle}>{props.heading}</Typography>
             </AccordionSummary>
             <AccordionDetails className={classes.AccordionDeatils}>
                 {props.children}

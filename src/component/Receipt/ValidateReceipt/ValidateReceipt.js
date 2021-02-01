@@ -1,6 +1,6 @@
 import React from 'react';
 import Paper from '../../MUI/Paper/Paper'
-import TextField from '../../MUI/TextFields/TextFields'
+import TextField from '@material-ui/core/TextField';
 import SelectButton from '../../MUI/Select/Select'
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -61,7 +61,7 @@ const ValidateReceipts = (props) => {
         <div className={classes.root}>
             <SelectButton {...branch} />
             <SelectButton {...semester}/>
-            <TextField/>
+            <TextField fullWidth/>
             <TextField/>
             <div style={{display:'flex', justifyContent:'center'}}><Button variant="contained" color="primary" style={{margin:'3%'}}>Submit</Button></div>
             </div>

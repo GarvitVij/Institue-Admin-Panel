@@ -10,6 +10,7 @@ import Paper from '../../component/MUI/Paper/Paper'
 import Home from '../../container/Home/Home'
 import Logs from '../../container/Logs/Logs'
 import Receipts from '../../container/Receipts/Receipts'
+import SiteUpdates from '../../container/SiteUpdates/SiteUpdates'
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 
 const theme = createMuiTheme({
@@ -85,11 +86,11 @@ class AdminPanelLayout extends Component {
                 <AppBar drawerOpenhandler={this.onDrawerOpenHandler} />
                 <Drawer drawerCloseHandler={this.onDrawerCloseHandler} isDrawerOpen={this.state.isDrawerOpen}/>
                 <Paper extraStyles={{minHeight:'86vh'}} bgcolor="rgba(255,255,255,0.88)" elevation={3}>
-                    <Receipts />
+                    <SiteUpdates />
                 </Paper>
            </div>
         </MuiThemeProvider>
-           )
+    )
    }
 }
 
