@@ -84,7 +84,7 @@ class AdminPanelLayout extends Component {
            <div className={classes.Layout}>
                 <AppBar drawerOpenhandler={this.onDrawerOpenHandler} />
                 <Drawer drawerCloseHandler={this.onDrawerCloseHandler} isDrawerOpen={this.state.isDrawerOpen}/>
-                <Paper extraStyles={{minHeight:'86vh'}} bgcolor="rgba(255,255,255,0.68)" elevation={3}>
+                <Paper extraStyles={{minHeight:'86vh'}} bgcolor="rgba(255,255,255,0.88)" elevation={3}>
                     <Receipts />
                 </Paper>
            </div>

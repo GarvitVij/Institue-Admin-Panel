@@ -50,9 +50,10 @@ class Logs extends Component {
                 byTask: 'createStudent',
             },
             timestamps:{
-                datetstamp: 0,
-                timestamp: 0
-            }
+                from: 0,
+                to: 0
+            },
+            error: false
     }
 
     onFilterChangeHandler = (id,value) => {
@@ -61,14 +62,21 @@ class Logs extends Component {
         this.setState({filters: updateFilter}) 
     }
 
-    onDateChangeHandler = (date) => {
-        const Dates = moment(date._d.toString()).startOf('day').unix()
-        console.log(Dates)
+    onTimestampChangeHandler = (date,id) => {
+        const updatedTimestamps = {...this.state.timestamps}
+        updatedTimestamps[id] = new Date(date._d).getTime()
+        this.setState({timestamps: updatedTimestamps})
     }
 
-    onTimeChangeHandler = (date) => {
-        const Dates = moment(date._d.toISOString()).unix()
-        console.log(Dates)
+    onSort = () => {
+        if(!this.state.timestamps.from < this.state.timestamps.to){
+            this.setState({error: true})
+        }
+        console.log('sorting here')
+    }
+
+    onSearch = () => {
+
     }
 
     render(){
@@ -78,9 +86,9 @@ class Logs extends Component {
             <Typography styles={TypographyHeadingStyles}>Logs</Typography>
             <LogControls 
                 filterHandler={this.onFilterChangeHandler}
-                DateHandler={(event) => this.onDateChangeHandler(event)} 
-                timeHandler={(event) => this.onTimeChangeHandler(event)}
-                selectDefaultValues={this.state.filters} 
+                selectDefaultValues={this.state.filters}
+                timeHandler={this.onTimestampChangeHandler}
+                timeDefaultValues={this.state.timestamps} 
             />
             <LogsList logs={this.state.logs} />
             </React.Fragment>

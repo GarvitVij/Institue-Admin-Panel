@@ -1,8 +1,7 @@
 import React from 'react';
 import ButtonGroup from '../../MUI/ButtonGroup/ButtonGroup'
 import SelectButton from '../../MUI/Select/Select'
-import DatePicker from '../../MUI/DateTimePicker/Date/Date'
-import TimePicker from '../../MUI/DateTimePicker/Time/Time'
+import DateAndTimePicker from '../../MUI/DateTimePicker/DateAndTimePicker'
 import Button from '@material-ui/core/Button';
 import Modal from '../../MUI/Modal/Modal'
 
@@ -45,8 +44,8 @@ const LogControls = (props) => {
                 <SelectButton {...byCode} clicked={props.filterHandler}  value={props.selectDefaultValues.byCode}/>
                 <SelectButton {...byTask} clicked={props.filterHandler} value={props.selectDefaultValues.byTask}/>
                 <SelectButton {...byAdmin} clicked={props.filterHandler} value={props.selectDefaultValues.byAdmin}/>
-                <DatePicker clicked={props.timeHandler} />
-                <TimePicker clicked={props.timeHandler} />
+                <DateAndTimePicker clicked={props.timeHandler} label="From" id="from" values={props.timeDefaultValues}/>
+                <DateAndTimePicker clicked={props.timeHandler} label="To" id="to" values={props.timeDefaultValues}/>
                 <Button style={{margin:'3%'}} variant="contained" color="primary">Sort</Button>
                 <Button style={{margin:'3%'}} variant="contained" color="primary">Search</Button>
             </ButtonGroup>

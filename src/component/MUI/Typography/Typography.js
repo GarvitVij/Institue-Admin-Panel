@@ -9,7 +9,7 @@ import Text from '@material-ui/core/Typography';
 import PropTypes from 'prop-types';
 
 const Typography = (props) => (
-    <Text {...props.styles} >{props.children}</Text>
+    <Text {...props.styles} style={props.style} >{props.children}</Text>
 )
 
 Typography.propTypes = {
