@@ -17,27 +17,25 @@ import UpdateIcon from '@material-ui/icons/Update';
 import AddToQueueIcon from '@material-ui/icons/AddToQueue';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
+import RepeatOneIcon from '@material-ui/icons/RepeatOne';
 import PropTypes from 'prop-types';
 
    const MUIList = (props) => {
 
         let Icon = null
         
-        Icon = props.icon === "HomeIcon" ? <HomeIcon /> : props.icon === "AssessmentIcon" ? <AssessmentIcon /> : props.icon === "ReceiptIcon" ? <ReceiptIcon /> : props.icon === "UpdateIcon" ?  <UpdateIcon /> : props.icon === "AddToQueueIcon" ? <AddToQueueIcon/> : props.icon === "ExitToAppIcon" ? <ExitToAppIcon /> :  props.icon === "SupervisorAccountIcon" ? <SupervisorAccountIcon /> : null
+        Icon = props.icon === "HomeIcon" ? <HomeIcon /> : props.icon === "AssessmentIcon" ? <AssessmentIcon /> : props.icon === "ReceiptIcon" ? <ReceiptIcon /> : props.icon === "UpdateIcon" ?  <UpdateIcon /> : props.icon === "AddToQueueIcon" ? <AddToQueueIcon/> : props.icon === "ExitToAppIcon" ? <ExitToAppIcon /> :  props.icon === "SupervisorAccountIcon" ? <SupervisorAccountIcon /> : props.icon === "RepeatOneIcon" ? <RepeatOneIcon /> : null
 
         const useStyles = makeStyles((theme) => ({
             Color: {
                 color:theme.palette.secondary.dark,
-            },
-            Margin:{
-                margin:'0 1vw'
             }
           }));
     
         const classes = useStyles();
     
         return (
-            <ListItem button className={classes.Margin}>
+            <ListItem button>
             <ListItemIcon className={classes.Color}>
                {Icon}
             </ListItemIcon>

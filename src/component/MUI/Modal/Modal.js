@@ -5,6 +5,7 @@ import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import Button from '@material-ui/core/Button';
 
+
 const useStyles = makeStyles((theme) => ({
   modal: {
     display: 'flex',
@@ -57,7 +58,7 @@ export default function TransitionsModal(props) {
             }}
         >
             <Fade in={open}>
-                <div className={classes.paper}>
+                <div className={classes.paper} style={props.styles}>
                     {props.children}
                 </div>
             </Fade>
