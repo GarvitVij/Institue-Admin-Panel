@@ -9,6 +9,10 @@ const useStyles = makeStyles((theme) => ({
           backgroundColor: 'rgba(33,22,101,0.30)'
       },
     },
+    DataGrid: {
+        height: '100%',
+        width: 'auto'
+      }
   }));
   
 
@@ -59,7 +63,7 @@ const ShowReceipts = (props) => {
 
     return(
         <Paper extraStyles={paperStyle}>
-            <div style={{ height: '100%', width: 'auto' }}>
+            <div className={classes.DataGrid}>
                 <DataGrid className={classes.root} rows={rows} columns={columns}  showToolbar />
             </div>
         </Paper>

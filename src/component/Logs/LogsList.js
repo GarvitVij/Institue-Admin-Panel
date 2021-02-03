@@ -10,7 +10,15 @@ const LogsList = (props) => {
     let moreLogs = null
 
     if(props.logs.length > 0){
-        logs = props.logs.map((log,index) => <DescriptionAlerts key={index} code={log.code} action={log.action} from={log.from} message={log.message} time={log.time} />)
+        logs = props.logs.map((log,index) => 
+        <DescriptionAlerts 
+            key={index} 
+            code={log.code} 
+            action={log.action} 
+            from={log.from} 
+            message={log.message} 
+            time={log.time} 
+        />)
     }
     
     if(props.logs.length < 3 && props.logs.length !== 0) {

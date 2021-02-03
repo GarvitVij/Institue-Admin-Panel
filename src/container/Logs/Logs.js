@@ -80,17 +80,21 @@ class Logs extends Component {
     }
 
     render(){
+
+        //Typography inline css
         const TypographyHeadingStyles = {variant:"h2", align:"center"}
+
+
         return (
             <React.Fragment>
-            <Typography styles={TypographyHeadingStyles}>Logs</Typography>
-            <LogControls 
-                filterHandler={this.onFilterChangeHandler}
-                selectDefaultValues={this.state.filters}
-                timeHandler={this.onTimestampChangeHandler}
-                timeDefaultValues={this.state.timestamps} 
-            />
-            <LogsList logs={this.state.logs} />
+                <Typography styles={TypographyHeadingStyles}>Logs</Typography>
+                <LogControls 
+                    filterHandler={this.onFilterChangeHandler}
+                    selectDefaultValues={this.state.filters}
+                    timeHandler={this.onTimestampChangeHandler}
+                    timeDefaultValues={this.state.timestamps} 
+                />
+                <LogsList logs={this.state.logs} />
             </React.Fragment>
             )
     }

@@ -36,8 +36,8 @@ import Button from '@material-ui/core/Button';
                 typographyStyle={accordionTypographyStyles}
                 >
                 <NoticeUpdate 
-                    heading={notice.heading} d
-                    escription={notice.description}    
+                    heading={notice.heading} 
+                    description={notice.description}    
                     />
             </SimpleAccordion> 
         )

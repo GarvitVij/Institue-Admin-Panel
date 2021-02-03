@@ -34,10 +34,10 @@ import Button from  '@material-ui/core/Button';
 
     return (
         <Modal heading="Search & Sort" styles={{width:'100%', flexDirection:'column'}}>
-        <TextField/>
+        <TextField fullWidth placeholder="RollNumbers"/>
         <Select {...branch} />
         <Select {...semester}/>
-        <div style={{width: '100%', justifyContent:'center', display:'flex'}}>
+        <div style={{width: '100%', justifyContent:'space-evenly', display:'flex',margin:'10px'}}>
         <Button variant="contained" color="primary" disableElevation>
             Sort
         </Button>

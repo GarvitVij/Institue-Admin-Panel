@@ -46,8 +46,9 @@ const LogControls = (props) => {
                 <SelectButton {...byAdmin} clicked={props.filterHandler} value={props.selectDefaultValues.byAdmin}/>
                 <DateAndTimePicker clicked={props.timeHandler} label="From" id="from" values={props.timeDefaultValues}/>
                 <DateAndTimePicker clicked={props.timeHandler} label="To" id="to" values={props.timeDefaultValues}/>
-                <Button style={{margin:'3%'}} variant="contained" color="primary">Sort</Button>
-                <Button style={{margin:'3%'}} variant="contained" color="primary">Search</Button>
+                
+                <Button variant="contained" color="primary">Sort</Button>
+                <Button variant="contained" color="primary">Search</Button>
             </ButtonGroup>
         </Modal>
     )  

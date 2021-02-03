@@ -219,7 +219,7 @@ class Home extends Component {
 
         const yearlyDataElement = this.state.Yearlydata.map(yearData => (
             <Grid item md={4} xs={12}  key={yearData.year}>
-                <Paper extraStyles={{...paperStyle, ...{display:'flex', justifyContent:'center'}}} elevation={2} bgcolor="white">  
+                <Paper extraStyles={paperStyle} elevation={2} bgcolor="white">  
                 <YearlyData year={yearData.year} batch={yearData.batch} branches={yearData.branches} />
                 </Paper>
             </Grid>

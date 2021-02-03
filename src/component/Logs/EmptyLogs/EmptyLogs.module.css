@@ -5,3 +5,8 @@
   align-items: center;
   justify-content: center;
 }
+
+.Icon {
+  font-size: 100px !important;
+  color: #505050;
+}

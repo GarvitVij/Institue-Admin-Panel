@@ -54,7 +54,7 @@ import classes from './Request.module.css'
                 </SimpleAccordion>)
 
        return (
-           <div style={{margin: '3%'}}>
+           <div className={classes.Requests}>
                 <Typography styles={typographySettings}>Requests</Typography>
                 <SearchSort />
                 <div className={classes.Request}>

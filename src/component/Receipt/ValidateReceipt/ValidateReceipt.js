@@ -8,13 +8,13 @@ import Button from '@material-ui/core/Button';
 const useStyles = makeStyles((theme) => ({
   root: {
     '& .MuiTextField-root': {
-      margin: theme.spacing(1),
+      margin: '2% 1%',
       minWidth: '50%',
       display: 'flex',
       alignItems: 'center',
-      flexDirection: 'column'
+      flexDirection: 'column',
     },
-  },
+  }
 }));
 
 
@@ -61,8 +61,8 @@ const ValidateReceipts = (props) => {
         <div className={classes.root}>
             <SelectButton {...branch} />
             <SelectButton {...semester}/>
-            <TextField fullWidth/>
-            <TextField/>
+            <TextField placeholder="Roll Number" fullWidth />
+            <TextField placeholder="Chalan Number" fullWidth />
             <div style={{display:'flex', justifyContent:'center'}}><Button variant="contained" color="primary" style={{margin:'3%'}}>Submit</Button></div>
             </div>
             </Paper>

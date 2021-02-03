@@ -25,10 +25,14 @@ class Receipts extends Component {
             buttonText = "Toggle to validate receipt"
         }
 
+        const TypographyStyles = {align: 'center', variant:"h2"}
+
        return (
            <React.Fragment>
-                <Typography styles={{align: 'center', variant:"h2"}}>{heading}</Typography>
-                <div className={classes.Center}><Button variant="contained" color="primary" onClick={this.toggleHandler}>{buttonText}</Button></div>
+                <Typography styles={TypographyStyles}>{heading}</Typography>
+                <div className={classes.Center}>
+                    <Button variant="contained" color="primary" onClick={this.toggleHandler}>{buttonText}</Button>
+                </div>
                 {component}
            </React.Fragment>
        )

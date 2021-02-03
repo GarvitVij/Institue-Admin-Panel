@@ -11,8 +11,12 @@ import classes from "./YearlyData.module.css";
 import PropTypes from 'prop-types';
 
 const YearlyData = (props) => {
+
+    //Typography Inline Css
     const typographyHeadingStyle = {variant:"h3", align:"center", gutterBottom:true}
     const typographyBatchStyle = {variant: "body1", align:"center", gutterBottom:true}
+
+
     return(
         <div className={classes.YearlyData}>
             <Typography styles={typographyHeadingStyle} >{props.year}</Typography>

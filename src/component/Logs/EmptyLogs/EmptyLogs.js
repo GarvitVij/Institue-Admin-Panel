@@ -5,7 +5,7 @@ import classes from './EmptyLogs.module.css'
 
    const EmptyLogs = (props) => (
         <div className={classes.EmptyLogs}>
-            <SentimentDissatisfiedIcon style={{fontSize: 100, color: '#505050'}} />
+            <SentimentDissatisfiedIcon className={classes.Icon}/>
             <Typography>{props.title}</Typography>
         </div>
    )
