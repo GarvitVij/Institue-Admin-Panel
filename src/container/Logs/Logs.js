@@ -9,51 +9,60 @@ class Logs extends Component {
             logs:[{
                 code: 200,
                 message: "Task Completed Successfuly",
-                from: "Admin 1",
+                from: "adminOne",
                 action: "Create Student",
-                time: 1612016445 
+                time: 1612016445000 
             }, {
                 code: 400,
                 message: "Oops the action failed ! Something went Wrong",
-                from: "Admin 2",
+                from: "adminTwo",
                 action: "Delete Batch Students",
-                time: 1612016445 
+                time: 1612016445000 
             }, {
                 code: 500,
                 message: "Server Error ! cant handle the request now !",
-                from: "Admin 3",
+                from: "adminThree",
                 action: "Delete Student",
-                time: 1612016445 
+                time: 1612016445000 
             },{
                 code: 204,
                 message: "Update Successfull !",
-                from: "Admin 2",
+                from: "adminOne",
                 action: "Semester Update",
-                time: 1612016445 
+                time: 1612016445000 
             },{
                 code: 204,
                 message: "Update Successfull !",
-                from: "Admin 2",
+                from: "adminTwo",
                 action: "Semester Update",
-                time: 1612016445 
+                time: 1612557712182
             },{
                 code: 204,
                 message: "Update Successfull !",
-                from: "Admin 2",
+                from: "adminThree",
                 action: "Semester Update",
-                time: 1612016445 
+                time: 1612016445000 
             }
             ],
+            filteredLogs: [],
             filters: {
-                byCode: 200,
-                byAdmin: 'adminOne',
-                byTask: 'createStudent',
+                byCode: '',
+                byAdmin: '',
+                byTask: '',
             },
             timestamps:{
                 from: 0,
                 to: 0
             },
-            error: false
+            modal: false,
+    }
+
+    onModalOpenHandler = () => {
+        this.setState({modal: true})
+    }
+
+    onModalCloseHandler = () => {
+        this.setState({modal:false})
     }
 
     onFilterChangeHandler = (id,value) => {
@@ -64,26 +73,28 @@ class Logs extends Component {
 
     onTimestampChangeHandler = (date,id) => {
         const updatedTimestamps = {...this.state.timestamps}
-        updatedTimestamps[id] = new Date(date._d).getTime()
+        updatedTimestamps[id] = date ? new Date(date._d).getTime() : 0
         this.setState({timestamps: updatedTimestamps})
     }
 
     onSort = () => {
-        if(!this.state.timestamps.from < this.state.timestamps.to){
-            this.setState({error: true})
-        }
-        console.log('sorting here')
+        let filteredLogs = this.state.logs
+            .filter(log => log.code ===  (this.state.filters.byCode !== '' ? this.state.filters.byCode : log.code))
+            .filter(log => (log.action.charAt(0).toLowerCase() + log.action.slice(1).replaceAll(' ','')) === (this.state.filters.byTask !== '' ? this.state.filters.byTask : log.action.charAt(0).toLowerCase() + log.action.slice(1).replaceAll(' ','')))
+            .filter(log => log.from === (this.state.filters.byAdmin !== '' ? this.state.filters.byAdmin : log.from))
+            .filter(log => log.time >= this.state.timestamps.from && log.time <= (this.state.timestamps.to === 0 ? new Date():this.state.timestamps.to))
+        this.setState({filteredLogs: filteredLogs, modal: false})
     }
 
     onSearch = () => {
-
+        console.log("Here Goes Request")
+        this.setState({modal: false})
     }
 
     render(){
 
         //Typography inline css
         const TypographyHeadingStyles = {variant:"h2", align:"center"}
-
 
         return (
             <React.Fragment>
@@ -93,8 +104,15 @@ class Logs extends Component {
                     selectDefaultValues={this.state.filters}
                     timeHandler={this.onTimestampChangeHandler}
                     timeDefaultValues={this.state.timestamps} 
+                    modal = { this.state.modal }
+                    onModalOpen={this.onModalOpenHandler}
+                    onModalClose={this.onModalCloseHandler}
+                    minDate={this.state.timestamps.from}
+                    onSort={this.onSort}
+                    isToDisable={this.state.isToDisable}
+                    onSearch={this.onSearch}
                 />
-                <LogsList logs={this.state.logs} />
+                <LogsList logs={this.state.filteredLogs.length === 0 ? this.state.logs : this.state.filteredLogs} />
             </React.Fragment>
             )
     }

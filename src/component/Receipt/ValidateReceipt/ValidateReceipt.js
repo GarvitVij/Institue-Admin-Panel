@@ -37,12 +37,12 @@ const ValidateReceipts = (props) => {
         title: 'Semester',
         id:'semester',
         options: [
-            {value: 'semOne', text: 'Semester One'},
-            {value: 'semTwo', text: 'Semester Two'},
-            {value: 'semThree', text: 'Semester Three'},
-            {value: 'semfour', text: 'Semester Four'},
-            {value: 'semFive', text: 'Semester Five'},
-            {value: 'semSix', text: 'Semester Six'},
+            {value: 'semesterOne', text: 'Semester One'},
+            {value: 'semesterTwo', text: 'Semester Two'},
+            {value: 'semesterThree', text: 'Semester Three'},
+            {value: 'semesterfour', text: 'Semester Four'},
+            {value: 'semesterFive', text: 'Semester Five'},
+            {value: 'semesterSix', text: 'Semester Six'},
             {value: 'additionalAttenpt', text: 'Additional Attempt'},
         ]
     }
@@ -59,11 +59,11 @@ const ValidateReceipts = (props) => {
     return(
         <Paper extraStyles={paperStyle} bgcolor="white">
         <div className={classes.root}>
-            <SelectButton {...branch} />
-            <SelectButton {...semester}/>
-            <TextField placeholder="Roll Number" fullWidth />
-            <TextField placeholder="Chalan Number" fullWidth />
-            <div style={{display:'flex', justifyContent:'center'}}><Button variant="contained" color="primary" style={{margin:'3%'}}>Submit</Button></div>
+            <SelectButton {...branch} value={props.branch} clicked={props.onSelectHandler}/>
+            <SelectButton {...semester} value={props.semester} clicked={props.onSelectHandler}/>
+            <TextField placeholder="Roll Number" id="rollNumber" value={props.rollNumber} fullWidth onChange={(event)=>{props.onInputHandler(event)}} />
+            <TextField placeholder="Chalan Number" id="chalanNumber" value={props.chalanNumber} fullWidth onChange={(event)=>{props.onInputHandler(event)}} />
+            <div style={{display:'flex', justifyContent:'center'}}><Button onClick={props.onSubmit} variant="contained" color="primary" style={{margin:'3%'}}>Submit</Button></div>
             </div>
             </Paper>
     )

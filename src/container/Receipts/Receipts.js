@@ -7,16 +7,40 @@ import classes from './Receipts.module.css'
 
 class Receipts extends Component {
        state = {
-           isValidate: true
+           isValidate: true,
+           branch: '',
+           semester: '',
+           rollNumber: 0,
+           chalanNumber: ''
        }
    
        toggleHandler = () =>{
            this.setState((state)=>({isValidate: !state.isValidate}))
        }
 
+       onSelectHandler = (id,value) => {
+        this.setState({[id]: value })
+       }
+
+       onInputHandler = (event) => {
+            this.setState({[event.target.id] : event.target.value})
+       }
+
+       onSubmitHandler = () => {
+           console.log('Request Goes here')
+       }
+
 
      render(){
-        let component = <ValidateReceipt />
+        let component = <ValidateReceipt
+            onSelectHandler={this.onSelectHandler}
+            onInputHandler={this.onInputHandler}
+            rollNumber={this.state.rollNumber}
+            chalanNumber={this.state.chalanNumber}
+            branch={this.state.branch}
+            semester={this.state.semester}
+            onSubmit={this.onSubmitHandler}
+        />
         let heading = "Validate Receipt"
         let buttonText = "Toggle to show receipts"
         if(!this.state.isValidate){

@@ -32,34 +32,25 @@ const useStyles = makeStyles((theme) => ({
 
   const classes = useStyles();
   
-  const [open, setOpen] = React.useState(false);
-
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
 
   return (
     <div className={classes.button}>
-        <Button color="primary" variant="contained" onClick={handleOpen}>
+        <Button color="primary" variant="contained" onClick={props.onModalOpen}>
             {props.heading}
         </Button>
         <Modal
             aria-labelledby="modal"
             aria-describedby="modal"
             className={classes.modal}
-            open={open}
-            onClose={handleClose}
+            open={props.modalState}
+            onClose={props.onModalClose}
             closeAfterTransition
             BackdropComponent={Backdrop}
             BackdropProps={{
                 timeout: 500,
             }}
         >
-            <Fade in={open}>
+            <Fade in={props.modalState}>
                 <div className={classes.paper} style={props.extraStyles}>
                     {props.children}
                 </div>
