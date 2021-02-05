@@ -3,6 +3,8 @@ import Modal from '../../MUI/Modal/Modal'
 import Select from '../../MUI/Select/Select'
 import TextField from '../../MUI/TextFields/TextFields'
 import Button from  '@material-ui/core/Button';
+import classes from './SearchSort.module.css'
+
 
    const SearchSort = (props) => {
     const branch = {
@@ -33,11 +35,11 @@ import Button from  '@material-ui/core/Button';
     }
 
     return (
-        <Modal heading="Search & Sort" styles={{width:'100%', flexDirection:'column'}}>
+        <Modal heading="Search & Sort" extraStyles={{width: '100%', flexDirection: 'column'}}>
         <TextField fullWidth placeholder="RollNumbers"/>
         <Select {...branch} />
         <Select {...semester}/>
-        <div style={{width: '100%', justifyContent:'space-evenly', display:'flex',margin:'10px'}}>
+        <div className={classes.Bottons}>
         <Button variant="contained" color="primary" disableElevation>
             Sort
         </Button>

@@ -6,27 +6,29 @@ import Fade from '@material-ui/core/Fade';
 import Button from '@material-ui/core/Button';
 
 
-const useStyles = makeStyles((theme) => ({
-  modal: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  paper: {
-    backgroundColor: theme.palette.background.paper,
-    borderRadius:'25px',
-    margin:'10%',
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
-    display:'flex'
-  },
-  button:{
-    textAlign:'center',
-    margin:'2%'
-  }
-}));
-
 export default function TransitionsModal(props) {
+
+    
+const useStyles = makeStyles((theme) => ({
+    modal: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    paper: {
+      backgroundColor: theme.palette.background.paper,
+      borderRadius:'25px',
+      margin:'10%',
+      boxShadow: theme.shadows[5],
+      padding: theme.spacing(2, 4, 3),
+      display:'flex'
+    },
+    button:{
+      textAlign:'center',
+      margin:'2% 0',
+    }
+  }));
+  
 
   const classes = useStyles();
   
@@ -58,7 +60,7 @@ export default function TransitionsModal(props) {
             }}
         >
             <Fade in={open}>
-                <div className={classes.paper} style={props.styles}>
+                <div className={classes.paper} style={props.extraStyles}>
                     {props.children}
                 </div>
             </Fade>

@@ -4,6 +4,7 @@ import SelectButton from '../../MUI/Select/Select'
 import DateAndTimePicker from '../../MUI/DateTimePicker/DateAndTimePicker'
 import Button from '@material-ui/core/Button';
 import Modal from '../../MUI/Modal/Modal'
+import classes from './LogsControls.module.css'
 
 const LogControls = (props) => {
     const byCode = {
@@ -46,9 +47,10 @@ const LogControls = (props) => {
                 <SelectButton {...byAdmin} clicked={props.filterHandler} value={props.selectDefaultValues.byAdmin}/>
                 <DateAndTimePicker clicked={props.timeHandler} label="From" id="from" values={props.timeDefaultValues}/>
                 <DateAndTimePicker clicked={props.timeHandler} label="To" id="to" values={props.timeDefaultValues}/>
-                
+                <div className={classes.Buttons}>
                 <Button variant="contained" color="primary">Sort</Button>
                 <Button variant="contained" color="primary">Search</Button>
+                </div>
             </ButtonGroup>
         </Modal>
     )  

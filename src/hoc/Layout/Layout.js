@@ -87,7 +87,7 @@ class AdminPanelLayout extends Component {
                 <AppBar drawerOpenhandler={this.onDrawerOpenHandler} />
                 <Drawer drawerCloseHandler={this.onDrawerCloseHandler} isDrawerOpen={this.state.isDrawerOpen}/>
                 <Paper extraStyles={{minHeight:'86vh'}} bgcolor="rgba(255,255,255,0.88)" elevation={3}>
-                    <Request />
+                    <Logs />
                 </Paper>
            </div>
         </MuiThemeProvider>
