@@ -9,7 +9,7 @@ import Button from '@material-ui/core/Button';
             <Typography  styles={{gutterBottom:true, variant:"h6"}}>Branch : {props.branch}</Typography>
             <Typography  styles={{gutterBottom:true, variant:"h6"}}>Semester : {props.semester}</Typography>
             <Typography  styles={{gutterBottom:true, variant:"h6"}}>Subject( From ) : {props.subjectFrom}  →  Subject( To ) : {props.subjectTo} </Typography>
-            <Button fullWidth variant="contained" color="primary">
+            <Button fullWidth variant="contained" color="primary" onClick={()=>{props.click(props.id)}}>
             Submit
           </Button>
         </div>

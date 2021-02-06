@@ -7,8 +7,8 @@ import classes from './Notice.module.css'
 
     return(
         <div className={classes.Notice}>
-            <TextField variant="filled" id={props.heading} label={props.heading} fullWidth={true} value={props.heading} />
-            <TextField multiline fullWidth variant="filled" id={props.heading} label={props.heading} value={props.description}/>
+            <TextField onChange={(event)=>props.changed(event,props.id)} variant="filled" id="heading" label="Heading" fullWidth={true} value={props.heading} />
+            <TextField onChange={(event)=>props.changed(event,props.id)}  multiline fullWidth variant="filled" id="description" label="Description" value={props.description}/>
         </div>
     )
 
