@@ -9,28 +9,36 @@ import Avatar from '../../MUI/Avatar/Avatar'
 const listItems = [
     {
         label: "Home",
-        icon: "HomeIcon"
+        icon: "HomeIcon",
+        link:"/home"
     }, {
         label: "Detailed Report",
-        icon: "AssessmentIcon"
+        icon: "AssessmentIcon",
+        link: "/detailedReport"
     }, {
         label: "Receipts",
-        icon: "ReceiptIcon"
+        icon: "ReceiptIcon",
+        link: "/receipts"
     }, {
         label: "Request",
-        icon: "RepeatOneIcon"
+        icon: "RepeatOneIcon",
+        link: "/request"
     },{
         label: "Site Updates",
-        icon: "UpdateIcon"
+        icon: "UpdateIcon",
+        link: "/siteUpdates"
     }, {
         label: "Student Updates",
-        icon: "SupervisorAccountIcon"
+        icon: "SupervisorAccountIcon",
+        link: "/studentUpdates"
     }, {
         label: "Logs",
-        icon: "AddToQueueIcon"
+        icon: "AddToQueueIcon",
+        link: "/logs"
     }, {
         label: "Logout",
-        icon: "ExitToAppIcon"
+        icon: "ExitToAppIcon",
+        link: "/logout"
     }
 ]
 

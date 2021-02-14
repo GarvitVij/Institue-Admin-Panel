@@ -13,8 +13,7 @@ import classes from '../BasicStyles.module.css'
    const DeleteStudent = (props) => {
     let visibleComponent = <div> <Typography>No students were selected</Typography> <div className={classes.Center}> <Button variant="contained" className={classes.Safe}>Cancle</Button></div></div>
 
-    
-    if(props.students) {
+    if(props.students.length > 0) {
         visibleComponent = 
         <div>
             <TableContainer component={Paper}>
@@ -25,19 +24,18 @@ import classes from '../BasicStyles.module.css'
                             <TableCell align="right">Name</TableCell>
                             <TableCell align="right">Branch</TableCell>
                             <TableCell align="right">Semester</TableCell>
-                            <TableCell align="right">Is lateral Entry</TableCell>
                         </TableRow>
                     </TableHead>
                 <TableBody>
                 {props.students.map((student) => (
-                    <TableRow key={student.rollNumber}>
+                    <TableRow key={student.data.rollNumber}>
                       <TableCell component="th" scope="row">
-                        {student.rollNumber}
+                        {student.data.rollNumber}
                       </TableCell>
-                      <TableCell align="right">{student.name}</TableCell>
-                      <TableCell align="right">{student.batch}</TableCell>
-                      <TableCell align="right">{student.semester}</TableCell>
-                      <TableCell align="right">{student.isLateralEntry ? "True" : "False"}</TableCell>
+                      <TableCell align="right">{student.data.Name}</TableCell>
+                      <TableCell align="right">{student.data.Batch}</TableCell>
+                      <TableCell align="right">{student.data.currentSemester}</TableCell>
+
                     </TableRow>
                   ))}
                 </TableBody>

@@ -19,6 +19,7 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
 import RepeatOneIcon from '@material-ui/icons/RepeatOne';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom'
 
    const MUIList = (props) => {
 
@@ -29,18 +30,23 @@ import PropTypes from 'prop-types';
         const useStyles = makeStyles((theme) => ({
             Color: {
                 color:theme.palette.secondary.dark,
+            },
+            Link: {
+                textDecoration: 'none',
             }
           }));
     
         const classes = useStyles();
     
         return (
+            <NavLink to={`${props.link}`} activeClassName={classes.Link} className={classes.Link}>
             <ListItem button>
             <ListItemIcon className={classes.Color}>
                {Icon}
             </ListItemIcon>
             <ListItemText className={classes.Color} primary={props.name} />
         </ListItem>
+        </NavLink>
         )
     }
 

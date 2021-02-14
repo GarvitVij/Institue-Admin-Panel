@@ -13,7 +13,7 @@ const MUILists = (props) => {
         {props.children}
             <List>
                 {props.list.map(list => {
-                    return (<MUIList key={list.label} name={list.label} icon={list.icon}/>)
+                    return (<MUIList key={list.label} name={list.label} icon={list.icon} link={list.link}/>)
                 })}
             </List>
         </div>

@@ -15,6 +15,7 @@ import Request from '../../container/Request/Request'
 import DetailedReport from '../../container/DetailedReport/DetailedReport'
 import StudentUpdates from '../../container/StudentUpdates/StudentUpdates'
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
+import {Switch, Route} from 'react-router-dom'
 
 const theme = createMuiTheme({
     typography: {
@@ -89,7 +90,17 @@ class AdminPanelLayout extends Component {
                 <AppBar drawerOpenhandler={this.onDrawerOpenHandler} />
                 <Drawer drawerCloseHandler={this.onDrawerCloseHandler} isDrawerOpen={this.state.isDrawerOpen}/>
                 <Paper extraStyles={{minHeight:'86vh'}} bgcolor="rgba(255,255,255,0.88)" elevation={3}>
-                    <StudentUpdates />
+                    <Switch>
+                        <Route exact path="/" component={Home} />
+                        <Route exact path="/home" component={Home} />
+                        <Route exact path="/detailedReport" component={DetailedReport} />
+                        <Route exact path="/receipts" component={Receipts} />
+                        <Route exact path="/request" component={Request} />
+                        <Route exact path="/siteUpdates" component={SiteUpdates} />
+                        <Route exact path="/studentUpdates" component={StudentUpdates} />
+                        <Route exact path="/logs" component={Logs} />
+                        <Route exact path="/logout" component={Home} />
+                    </Switch>
                 </Paper>
            </div>
         </MuiThemeProvider>

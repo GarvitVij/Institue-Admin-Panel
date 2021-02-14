@@ -7,19 +7,29 @@ import DeleteBatch from './DeleteBatch/DeleteBatch'
 import DeleteStudent from './DeleteStudent/DeleteStudent'
 import PromoteHold from './PromoteHold/PromoteHold'
 import { CSVLink } from "react-csv";
+import {useState} from 'react'
+import Drawer from '../../MUI/Drawer/Drawer'
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 
    const Buttons = (props) => {
-    const csvData = [
-        ["firstname", "lastname", "email"],
-        ["Ahmed", "Tomi", "ah@smthing.co.com"],
-        ["Raed", "Labes", "rl@smthing.co.com"],
-        ["Yezzi", "Min l3b", "ymin@cocococo.com"]
-      ];
+
+    
+    const [open, toggleDrawer] = useState(false)
+
+
        return(
         <div className={classes.Buttons}>
-        <Button variant="contained" color="primary">
+        <Button variant="contained" color="primary" onClick={()=>toggleDrawer({open: true})}>
             Semester
         </Button>
+        <Drawer drawerSide="right" isOpen={open} closeHandler={() => toggleDrawer(!open)} >
+        {props.branches.map( branch => 
+            <ListItem button onClick={(event) => props.branchChange(event)}>
+            <ListItemText primary={branch} />
+          </ListItem>
+        )}
+    </Drawer>
         <FilePicker
         extensions={['.gtbpi']}
         onChange={FileObject => {console.log(FileObject)}}
@@ -29,10 +39,10 @@ import { CSVLink } from "react-csv";
                 Add Students
             </Button>
         </FilePicker>
-        <Modal heading="Delete Batch" modalState={props.modalName === "Delete Batch" ? true : false} onModalOpen={props.onModalOpen} onModalClose={props.onModalClose}><DeleteBatch /></Modal>
-        <Modal heading="Delete student" modalState={props.modalName === "Delete student" ? true : false} onModalOpen={props.onModalOpen} onModalClose={props.onModalClose}><DeleteStudent students={[{rollNumber : 1, name: 'ar', semester: 2, batch: "CS", isLateralEntry: true}]} /></Modal>
-        <Modal heading="Promote / Hold" modalState={props.modalName === "Promote / Hold" ? true : false} onModalOpen={props.onModalOpen} onModalClose={props.onModalClose}><PromoteHold students={[{rollNumber : 1, name: 'ar', semester: 2, batch: "CS", isLateralEntry: true}]} /></Modal>
-        <CSVLink data={csvData}><Button variant="contained" color="primary">Backup CSV</Button></CSVLink>
+        <Modal heading="Delete Batch" modalState={props.modalName === "Delete Batch" ? true : false} onModalOpen={props.onModalOpen} onModalClose={props.onModalClose}><DeleteBatch batch={props.branch} close={props.onModalClose}/></Modal>
+        <Modal heading="Delete student" modalState={props.modalName === "Delete student" ? true : false} onModalOpen={props.onModalOpen} onModalClose={props.onModalClose}><DeleteStudent students={props.selectedData} /></Modal>
+        <Modal heading="Promote / Hold" modalState={props.modalName === "Promote / Hold" ? true : false} onModalOpen={props.onModalOpen} onModalClose={props.onModalClose}><PromoteHold students={props.selectedData} /></Modal>
+        <CSVLink data={props.tableData}><Button variant="contained" color="primary">Backup CSV</Button></CSVLink>
     </div>
     )}
 
