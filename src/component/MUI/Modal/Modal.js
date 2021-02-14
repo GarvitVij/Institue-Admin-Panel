@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
 
   return (
     <div className={classes.button}>
-        <Button color="primary" variant="contained" onClick={props.onModalOpen}>
+        <Button color="primary" variant="contained" onClick={() => props.onModalOpen(props.heading)}>
             {props.heading}
         </Button>
         <Modal

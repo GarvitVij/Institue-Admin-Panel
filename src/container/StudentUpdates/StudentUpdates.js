@@ -1,11 +1,23 @@
 import React, { Component } from 'react';
-import Button from '@material-ui/core/Button';
-import classes from './StudentUpdates.module.css'
 import DataGrid from '../../component/MUI/DataGrid/DataGrid'
 import Paper from '../../component/MUI/Paper/Paper'
+import Buttons from '../../component/StudentUpdates/Buttons/Buttons'
+
 
    class StudentUpdates extends Component {
-       state = {}
+       state = {
+           modalEventName: ''
+       }
+
+       onModalOpenHandler = (target) => {
+           this.setState({ modalEventName: target })
+       }
+
+       onModalCloseHandler = () => {
+           this.setState({modalEventName: ''})
+       }
+
+
 
    render(){
 
@@ -17,29 +29,7 @@ import Paper from '../../component/MUI/Paper/Paper'
 
        return (
            <React.Fragment>
-            <div className={classes.StudentUpdatesButtons}>
-                <Button variant="contained" color="primary">
-                    Semester
-                </Button>
-                <Button variant="contained" color="primary">
-                    Add A Batch
-                </Button>
-                <Button variant="contained" color="primary">
-                Add A Student
-                </Button>
-                <Button variant="contained" color="primary">
-                    Delete A Batch
-                </Button> 
-                <Button variant="contained" color="primary">
-                Delete A Student
-                </Button>        
-                <Button variant="contained" color="primary">
-                    Promote / Hold
-                </Button>
-                <Button variant="contained" color="primary">
-                    Backup CSV
-                </Button>
-            </div>
+            <Buttons modalName={this.state.modalEventName} onModalOpen={this.onModalOpenHandler} onModalClose={this.onModalCloseHandler}/>
             <Paper extraStyles={paperStyle}>
             <DataGrid colums={[]} data={[]}/>
             </Paper>

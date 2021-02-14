@@ -1,0 +1,23 @@
+.Buttons {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 2% 0%;
+  justify-content: center;
+}
+
+.Buttons > * {
+  margin: 0% 2% !important;
+}
+
+@media (max-width: 1380px) {
+  .Buttons > * {
+    margin: 0% 1% !important;
+  }
+}
+
+@media (max-width: 1130px) {
+  .Buttons > * {
+    margin: 1% 1% !important;
+  }
+}
