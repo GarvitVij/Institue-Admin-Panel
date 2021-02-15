@@ -15,7 +15,7 @@ import classes from './ReportControls.module.css'
             <Button variant="contained"  color="primary" onClick={()=>toggleDrawer({open: true})}>Branches</Button>
                 <Drawer drawerSide="right" isOpen={open} closeHandler={() => toggleDrawer(!open)} >
                     {props.branches.map( branch => 
-                        <ListItem button onClick={(event) => props.onChange(event)}>
+                        <ListItem button onClick={(event) => {props.onChange(event) }}>
                         <ListItemText primary={branch} />
                       </ListItem>
                     )}

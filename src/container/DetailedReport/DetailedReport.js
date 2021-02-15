@@ -1152,7 +1152,7 @@ import Paper from '../../component/MUI/Paper/Paper'
         branches : [],
         selectedBranch: '',
         tableData: [],
-        selectedData: []
+        selectedData: [],
         }
 
         onSelectRowHandler = (row) => {

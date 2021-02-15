@@ -16,7 +16,9 @@ const MUIDrawer = (props) => {
                 open={props.isOpen}
                 onClose={props.closeHandler}
             >
+            <div onClick={props.closeHandler}>
                 {props.children}
+            </div>
             </Drawer>
         </React.Fragment>
     )
