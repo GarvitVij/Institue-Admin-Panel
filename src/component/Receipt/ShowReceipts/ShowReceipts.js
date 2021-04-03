@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Paper from '../../MUI/Paper/Paper'
 import { DataGrid } from '@material-ui/data-grid';
 import { makeStyles } from '@material-ui/core/styles';
+import axios from '../../../axios'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -18,6 +19,27 @@ const useStyles = makeStyles((theme) => ({
 
 const ShowReceipts = (props) => {
 
+    const [receipts, setReceipts] = useState([]);
+    const [page, setPage] = React.useState(1);
+
+    useEffect(() => {
+        (async () => {
+            const paged = {}
+            paged.start = (page - 1) * 100
+            paged.end = page * 100
+            axios.get('/api/admin/receipts/', {withCredentials: true, params: {
+                paged
+            }}).then(res => {
+                if(receipts.length !== 0){
+                    if(receipts.sort() !== res.data.receipts.sort()){
+                        return 0
+                    }
+                }
+                res.data.receipts = res.data.receipts.map(data => {return {...data, id: data.rollNumber}})
+                setReceipts(res.data.receipts)
+            })
+        })();
+      });
     
     const classes = useStyles();
 
@@ -29,42 +51,28 @@ const ShowReceipts = (props) => {
     }
 
     const columns = [
-        { field: 'id', headerName: 'ID', width: 70 },
-        { field: 'firstName', headerName: 'First name', width: 130 },
-        { field: 'lastName', headerName: 'Last name', width: 130 },
+        { field: 'rollNumber', headerName: 'Roll Number', width: 130 },
+        { field: 'semester', headerName: 'Semester', width: 130 },
         {
-          field: 'age',
-          headerName: 'Age',
-          type: 'number',
+          field: 'receiptID',
+          headerName: 'Receipt ID',
           width: 90,
         },
         {
-          field: 'fullName',
-          headerName: 'Full name',
-          description: 'This column has a value getter and is not sortable.',
-          sortable: false,
-          width: 160,
-          valueGetter: (params) =>
-            `${params.getValue('firstName') || ''} ${params.getValue('lastName') || ''}`,
+          field: 'notes',
+          headerName: 'For',
+          width: 400
         },
-      ];
-
-    const rows = [
-        { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
-        { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-        { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
-        { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
-        { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-        { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
-        { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-        { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-        { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
+        {field: 'amount', headerName: 'Fee Paid', width: 130}
       ];
 
     return(
         <Paper extraStyles={paperStyle}>
             <div className={classes.DataGrid}>
-                <DataGrid className={classes.root} rows={rows} columns={columns}  showToolbar />
+                <DataGrid    page={page}
+                onPageChange={(params) => {
+                  setPage(params.page);
+                }} className={classes.root} rows={receipts} columns={columns}   pagination showToolbar />
             </div>
         </Paper>
     )

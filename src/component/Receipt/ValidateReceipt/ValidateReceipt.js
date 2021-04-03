@@ -19,31 +19,22 @@ const useStyles = makeStyles((theme) => ({
 
 
 const ValidateReceipts = (props) => {
-
-    const branch = {
-        title: 'Branch',
-        id:'branch',
-        options: [
-            {value: 'CS-M', text: 'Computer Science Morning'},
-            {value: 'CS-E', text: 'Computer Science Evening'},
-            {value: 'ENE-M', text: 'Electrical & Communication Morning'},
-            {value: 'ENE-E', text: 'Electrical & Communication Evening'},
-            {value: 'AM-M', text: 'AutoMobile Morning'},
-            {value: 'AM-E', text: 'AutoMobile Evening'},
-        ]
-    }
-
+    
     const semester = {
         title: 'Semester',
         id:'semester',
         options: [
-            {value: 'semesterOne', text: 'Semester One'},
-            {value: 'semesterTwo', text: 'Semester Two'},
-            {value: 'semesterThree', text: 'Semester Three'},
-            {value: 'semesterfour', text: 'Semester Four'},
-            {value: 'semesterFive', text: 'Semester Five'},
-            {value: 'semesterSix', text: 'Semester Six'},
-            {value: 'additionalAttenpt', text: 'Additional Attempt'},
+            {value: 1, text: 'Semester One'},
+            {value: 2, text: 'Semester Two'},
+            {value: 3, text: 'Semester Three'},
+            {value: 4, text: 'Semester Four'},
+            {value: 5, text: 'Semester Five'},
+            {value: 6, text: 'Semester Six'},
+            {value: 7, text: 'Semester Seven'},
+            {value: 8, text: 'Semester Eight'},
+            {value: 9, text: 'Semester Nine'},
+            {value: 10, text: 'Semester Ten'},
+
         ]
     }
 
@@ -59,7 +50,6 @@ const ValidateReceipts = (props) => {
     return(
         <Paper extraStyles={paperStyle} bgcolor="white">
         <div className={classes.root}>
-            <SelectButton {...branch} value={props.branch} clicked={props.onSelectHandler}/>
             <SelectButton {...semester} value={props.semester} clicked={props.onSelectHandler}/>
             <TextField placeholder="Roll Number" id="rollNumber" value={props.rollNumber} fullWidth onChange={(event)=>{props.onInputHandler(event)}} />
             <TextField placeholder="Chalan Number" id="chalanNumber" value={props.chalanNumber} fullWidth onChange={(event)=>{props.onInputHandler(event)}} />
