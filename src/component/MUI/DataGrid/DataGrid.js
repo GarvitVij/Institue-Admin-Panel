@@ -1,7 +1,21 @@
 import React from 'react';
-import { DataGrid } from '@material-ui/data-grid';
+import {
+    DataGrid,
+    GridToolbarContainer,
+    GridToolbarExport,
+  } from '@material-ui/data-grid';
 
-   const MUIDataGrid = (props) => {
+function CustomToolbar() {
+    return (
+      <GridToolbarContainer>
+        <GridToolbarExport />
+      </GridToolbarContainer>
+    );
+}
+
+
+
+const MUIDataGrid = (props) => {
     const columns = props.colums
       
       const rows = props.data;
@@ -12,9 +26,13 @@ import { DataGrid } from '@material-ui/data-grid';
             <DataGrid 
             rows={rows} 
             columns={columns} 
-            checkboxSelection
+            checkboxSelection={true}
             showToolbar={true}
+            components={{
+                Toolbar: CustomToolbar,
+              }}
             onRowSelected={(row)=>props.select(row)}
+            onColumnHeaderClick={(event) => props.selectAll(event)}
             />
         </div>
       )

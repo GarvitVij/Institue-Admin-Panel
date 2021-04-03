@@ -15,13 +15,11 @@ import classes from './ReportControls.module.css'
             <Button variant="contained"  color="primary" onClick={()=>toggleDrawer({open: true})}>Branches</Button>
                 <Drawer drawerSide="right" isOpen={open} closeHandler={() => toggleDrawer(!open)} >
                     {props.branches.map( branch => 
-                        <ListItem button onClick={(event) => {props.onChange(event) }}>
+                        <ListItem key={branch} button onClick={(event) => {props.onChange(event) }}>
                         <ListItemText primary={branch} />
                       </ListItem>
                     )}
                 </Drawer>
-                <Button variant="contained"  color="primary">Export Table Below</Button>
-                <Button variant="contained"  color="primary">Export All Details</Button>
             </div>      
         )
     }

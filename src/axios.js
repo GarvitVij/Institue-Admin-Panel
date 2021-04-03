@@ -23,13 +23,14 @@ instance.interceptors.response.use( function (response) {
         return Promise.reject({...error.response.data})
     }
 
+
     if(!error.response){
         return Promise.reject()
     }
 
    
     if(error.response.data){
-        if(error.response.status === 401 && error.response.data.error === "Please Authenticate"){
+        if(error.response.status === 401 && error.response.data.errorMessage === "Please Authenticate"){
             window.location.href = "/"
         }
     }
