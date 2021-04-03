@@ -25,36 +25,8 @@ import SnackBar from '../../component/MUI/snackbar/snackbar'
         branches : [],
         selectedBranch: '',
         tableData: [],
-        selectedData: [],
         contentFailed: false,
         errorMessage: ""
-        }
-
-        onSelectRowHandler = (row) => {
-            if(row.isSelected === true){
-                let selectedData = [...this.state.selectedData]
-                selectedData.push(row.data.id)
-                this.setState({selectedData: selectedData})
-            }else if(row.isSelected === false){
-                let selectedData = [...this.state.selectedData]
-                selectedData = selectedData.filter(id => {return id !== row.data.id})
-                this.setState({selectedData: selectedData})
-            }
-            console.log(this.state.selectedData)
-        }
-
-        
-        selectAll = (event) => {
-            const checked = document.querySelector('.PrivateSwitchBase-input-29').checked 
-            if(checked === true){
-                let selectedData = [...this.state.selectedData]
-                selectedData = event.api.getAllRowIds()
-                this.setState({selectedData:selectedData})
-            }else if(checked === false){
-                let selectedData = [...this.state.selectedData]
-                selectedData = []
-                this.setState({selectedData:selectedData})
-            }
         }
 
         componentDidMount(){
@@ -100,14 +72,14 @@ import SnackBar from '../../component/MUI/snackbar/snackbar'
     }
 
     const TypographyHeadingStyles = {variant:"h2", align:"center"}
-    const TypographyTableHeadingStyles = {variant:"h5", align:"center"}
+    const TypographyTableHeadingStyles = {variant:"h5", align:"center", gutterBottom:true}
        return (
            <React.Fragment>
            <Typography styles={TypographyHeadingStyles}>Detailed Report</Typography>
            <ReportControls branches={this.state.branches} onChange={this.onChangeHandler}/>
            <Paper extraStyles={paperStyle}>
            <Typography styles={TypographyTableHeadingStyles}>{this.state.selectedBranch === '' ? `No branch Selected` : this.state.selectedBranch }</Typography>
-           <DataGrid selectAll={this.selectAll} select={this.onSelectRowHandler} data={this.state.tableData} colums={this.state.columns} />
+           <DataGrid data={this.state.tableData} colums={this.state.columns} />
            </Paper>
            {this.state.contentFailed ? <SnackBar message={this.state.errorMessage} type="error" /> : null} 
            </React.Fragment>
