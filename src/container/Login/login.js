@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import LoginPage from '../../component/LoginPage/loginpage';
+import LoginPage from '../../component/LoginPage/LoginPage';
 import classes from './login.module.css';
 import axios from '../../axios';
-import SnackBar from '../../component/UI/snackbar/snackbar'
+import SnackBar from '../../component/MUI/snackbar/snackbar'
 
 class Login extends Component {
     state = {
@@ -22,8 +22,8 @@ class Login extends Component {
     }
      
     onLoginHandler = () => {
-        axios.post("/api/student/auth/login", 
-            {rollNumber: this.state.id, password: this.state.password},
+        axios.post("/api/admin/auth/login", 
+            {ID: this.state.id, password: this.state.password},
             {withCredentials: true}
         ).then(res => {
             if(res.data.isSuccess === true){
@@ -44,7 +44,7 @@ class Login extends Component {
             <div className={classes.Background}></div>
                 <div className={classes.Layout}>
                             <LoginPage 
-                                email={this.state.id}
+                                id={this.state.id}
                                 password={this.state.password}
                                 idHandler={(event) => this.idChangeHandler(event)}
                                 passwordHandler={(event) => this.passwordChangeHandler(event)}

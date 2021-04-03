@@ -9,11 +9,16 @@ import Paper from '../../component/MUI/Paper/Paper';
 import Chart from '../../component/Home/Charts/Chart'
 import Notices from '../../component/Home/Notices/Notices'
 import YearlyData from '../../component/Home/YearlyData/YearlyData'
+import axios from '../../axios'
+import SnackBar from '../../component/MUI/snackbar/snackbar'
 
 class Home extends Component {
     state = {
+        fetched: false,
+        contentFailed: false,
+        errorMessage: "",
         chartOne: {
-            series:[573,569,238],
+            series:[0,0,0],
             options:{
                 labels: ['Paid the fee', 'Updated Subjects', 'Not Logged in'],
                 legend:{
@@ -23,26 +28,21 @@ class Home extends Component {
                 }
         },
         chartTwo:{
-            series:[65464,53156,51656,21335,61656,23355],
+            series:[0,0,0],
             options:{
-                labels: ['CS (M)', 'CS(E)','E & C(M)','E & C(E)', 'AM (M)','AM(E)'],
+                labels: ['C S','A M ','E & C'],
                 legend:{
                     position:"right"
                 },
-                colors: ["#1976d2","#1e88e5","#388e3c", "#43a047" ,"#f57c00","#fb8c00"]
+                colors: ["#1976d2","#388e3c", "#f57c00" ]
                 } 
         },
         chartThree:{
             series: [
-                {name: "Computer Engineering-M",data: [121312,123412,123123]},
-                {name: "Computer Engineering-E",data: [121312,123412,123123]},
-                {name: "Computer Engineering-B",data: [121312,123412,123123]},
-                {name: "Electronics and Communication Engineering-M",data: [121312,123412,123123]},
-                {name: "Electronics and Communication Engineering-E",data: [121312,123412,123123]},
-                {name: "Electronics and Communication Engineering-B",data: [121312,123412,123123]},
-                {name: "Automobile engineering-M",data: [121312,123412,123123]},
-                {name: "Automobile engineering-E",data: [121312,123412,123123]},
-                {name: "Automobile engineering-B",data: [121312,123412,123123]}
+                {name: "Computer Engineering",data: [0,0,0]},
+                {name: "Automobile engineering",data: [0,0,0]},
+                {name: "Electronics and Communication Engineering",data: [0,0,0]},
+                {name: "Back",data: [0,0,0,0]},
             ],
             options:{
                 chart:{
@@ -59,12 +59,12 @@ class Home extends Component {
                     width: 1
                 },
                 xaxis: {
-                    categories: ["Year 1", "year 2", "year 3"]
+                    categories: ["Year 1", "year 2", "year 3", "Back"]
                 },
                 legend:{
                     position:"top"
                 },
-                colors: ["#1976d2","#1e88e5","#2196f3","#388e3c", "#43a047","#4caf50" ,"#f57c00","#fb8c00","#ff9800"]
+                colors: ["#1976d2","#388e3c","#f57c00","#33aaff"]
             }
         },
         Yearlydata: [
@@ -74,42 +74,18 @@ class Home extends Component {
                 branches: [
                     {
                         branch: "Computer Engineering",
-                        Morning: {
-                            timing: "Morning",
-                            total: 70,
-                            paid: 30,
-                        },
-                        Evening: {
-                            timing: "Evening",
-                            total: 70,
-                            paid: 30,
-                        }
+                        total: 0,
+                        paid: 0
                     },
                     {
                         branch: "Automobile Engineering",
-                        Morning: {
-                            timing: "Morning",
-                            total: 70,
-                            paid: 30,
-                        },
-                        Evening: {
-                            timing: "Evening",
-                            total: 70,
-                            paid: 30,
-                        }
+                        total: 0,
+                        paid: 0
                     },
                     {
                         branch: "Electronics and Communication Engineering",
-                        Morning: {
-                            timing: "Morning",
-                            total: 70,
-                            paid: 30,
-                        },
-                        Evening: {
-                            timing: "Evening",
-                            total: 70,
-                            paid: 30,
-                        }
+                        total: 0,
+                        paid: 0
                     }
                 ]
             },
@@ -119,42 +95,18 @@ class Home extends Component {
                 branches: [
                     {
                         branch: "Computer Engineering",
-                        Morning: {
-                            timing: "Morning",
-                            total: 70,
-                            paid: 30,
-                        },
-                        Evening: {
-                            timing: "Evening",
-                            total: 70,
-                            paid: 30,
-                        }
+                        total: 0,
+                        paid: 0
                     },
                     {
                         branch: "Automobile Engineering",
-                        Morning: {
-                            timing: "Morning",
-                            total: 70,
-                            paid: 30,
-                        },
-                        Evening: {
-                            timing: "Evening",
-                            total: 70,
-                            paid: 30,
-                        }
+                        total: 0,
+                        paid: 0
                     },
                     {
                         branch: "Electronics and Communication Engineering",
-                        Morning: {
-                            timing: "Morning",
-                            total: 70,
-                            paid: 30,
-                        },
-                        Evening: {
-                            timing: "Evening",
-                            total: 70,
-                            paid: 30,
-                        }
+                        total: 0,
+                        paid: 0
                     }
                 ]
             },
@@ -164,46 +116,65 @@ class Home extends Component {
                 branches: [
                     {
                         branch: "Computer Engineering",
-                        Morning: {
-                            timing: "Morning",
-                            total: 70,
-                            paid: 30,
-                        },
-                        Evening: {
-                            timing: "Evening",
-                            total: 70,
-                            paid: 30,
-                        }
+                        total: 0,
+                        paid: 0
                     },
                     {
                         branch: "Automobile Engineering",
-                        Morning: {
-                            timing: "Morning",
-                            total: 70,
-                            paid: 30,
-                        },
-                        Evening: {
-                            timing: "Evening",
-                            total: 70,
-                            paid: 30,
-                        }
+                        total: 0,
+                        paid: 0
                     },
                     {
                         branch: "Electronics and Communication Engineering",
-                        Morning: {
-                            timing: "Morning",
-                            total: 70,
-                            paid: 30,
-                        },
-                        Evening: {
-                            timing: "Evening",
-                            total: 70,
-                            paid: 30,
-                        }
+                        total: 0,
+                        paid: 0
                     }
                 ]
             }
-        ]
+        ],
+        notices: []
+
+    }
+
+    componentDidMount(){
+        if(this.state.fetched === false){
+            axios.get('/api/admin/home/', {withCredentials : true}).then(res => {
+                
+                // Charts
+                let chartOneCopy = {...this.state.chartOne}
+                chartOneCopy.series = [...this.state.chartOne.series]
+                chartOneCopy.series = res.data.chartOne
+                let chartTwoCopy = {...this.state.chartTwo}
+                chartTwoCopy.series = [...this.state.chartThree.series]
+                chartTwoCopy.series = res.data.chartTwo
+                let chartThreeCopy = {...this.state.chartThree}
+                chartThreeCopy.series = [...this.state.chartThree.series]
+                chartThreeCopy.series = res.data.chartThree
+                
+                //Accordion
+                let YearlyDataCopy = [...this.state.Yearlydata]
+                YearlyDataCopy = res.data.accordionData
+
+                //notices
+                let noticesCopy = [...this.state.notices]
+                noticesCopy = res.data.notices
+
+
+                this.setState(
+                    {fetched: true, 
+                        chartOne: chartOneCopy, 
+                        chartTwo: chartTwoCopy, 
+                        chartThree: chartThreeCopy,
+                        Yearlydata: YearlyDataCopy,
+                        notices: noticesCopy
+                    })
+            }).catch(err => {
+                this.setState({contentFailed: true, errorMessage: err.errorMessage})
+                setTimeout(()=>{
+                    this.setState({contentFailed: false, errorMessage: ''})
+                }, 3200)
+            })
+        }
 
     }
 
@@ -216,7 +187,7 @@ class Home extends Component {
             height: '100%',
             padding: 20
         }
-
+        
         const yearlyDataElement = this.state.Yearlydata.map(yearData => (
             <Grid item md={4} xs={12}  key={yearData.year}>
                 <Paper extraStyles={paperStyle} elevation={2} bgcolor="white">  
@@ -253,10 +224,11 @@ class Home extends Component {
         <Grid alignItems="center" container spacing={3}>
             <Grid item xs={12}>
                 <Paper extraStyles={paperStyle} elevation={2} bgcolor="white">
-                    <Notices />
+                    <Notices notices={this.state.notices} />
                 </Paper>
             </Grid>
         </Grid>
+        {this.state.contentFailed ? <SnackBar message={this.state.errorMessage} type="error" /> : null} 
         </div>
         )
     }

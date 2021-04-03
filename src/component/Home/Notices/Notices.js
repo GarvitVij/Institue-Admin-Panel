@@ -10,17 +10,9 @@ import CustomizedAccordion from '../../MUI/Accordions/CustomizedAccordion'
 import Typography from '../../MUI/Typography/Typography'
 
 const Notices = (props) => {
-    const noticesArray = [
-        {heading: "Fee Submission", description:"Last date to submit fee is 10 Jan"},
-        {heading: "Form Submission", description: "Last date to submit form is 20 Jan"},
-        {heading: "Regarding Examination", description: "Exams will start From 30 June"},
-        {heading: "Online Classes", description: "Classes will Start from 15Jan"},
-        {heading: "Result", description: "Result for Sem 1,3,6 is available at"}
 
-    ]
-
-    const notices = noticesArray.map((notice,index)=> {
-       return(<CustomizedAccordion key={index} panel={index} heading={notice.heading} description={notice.description} />) 
+    const notices = props.notices.map((notice,index)=> {
+       return(<CustomizedAccordion key={index} panel={index} heading={notice.title || "Empty title"} description={notice.desc || "Empty description"} />) 
     })
 
     const TypographyHeading={variant: "h5" , align:"center"}
