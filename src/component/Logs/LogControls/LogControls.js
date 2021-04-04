@@ -10,38 +10,30 @@ const LogControls = (props) => {
     const byCode = {
         title: 'By Code',
         id:'byCode',
-        options: [
-            {value: 200, text: '200'},
-            {value: 400, text: '400'},
-            {value: 500, text: '500'},
-            {value: 204, text: '204'},
-        ]
+        options: props.statusCode.map(code => {
+            return {value: parseInt(code), text: `${code}`}})
     }
 
     const byTask = {
         title: 'By Task',
         id:'byTask',
-        options: [
-            {value: 'createStudent', text: 'Create Student'},
-            {value: 'deleteBatchStudents', text: 'Delete Batch Students'},
-            {value: 'deleteStudent', text: 'Delete Student'},
-            {value: 'semesterUpdate', text: 'Semester Update'},
-        ]
+        options: props.operation.map(operation => {
+            return {value: operation, text: `${operation}`}
+        })
     }
 
     const byAdmin = {
         title: 'By Admin',
         id:'byAdmin',
-        options: [
-            {value: 'adminOne', text: 'Admin One'},
-            {value: 'adminTwo', text: 'Admin Two'},
-            {value: 'adminThree', text: 'Admin Three'},
-        ]
+        options:props.admins.map(admin => {
+            return {value: admin, text: `${admin}`}
+        })
     }
 
     return(
+       
         <Modal heading="Settings" modalState={props.modal} onModalOpen={props.onModalOpen} onModalClose={props.onModalClose}>
-            <div className={classes.Center}>
+        <div className={classes.Center}>
                 <SelectButton {...byCode} clicked={props.filterHandler}  value={props.selectDefaultValues.byCode}/>
                 <SelectButton {...byTask} clicked={props.filterHandler} value={props.selectDefaultValues.byTask}/>
                 <SelectButton {...byAdmin} clicked={props.filterHandler} value={props.selectDefaultValues.byAdmin}/>

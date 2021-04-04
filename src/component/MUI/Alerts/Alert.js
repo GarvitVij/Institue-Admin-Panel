@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Alert, AlertTitle } from '@material-ui/lab';
+import moment from 'moment'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -22,7 +23,7 @@ const DescriptionAlerts = (props) => {
       <div className={classes.root}>
         <Alert className={classes.Cover} severity={severity}>
           <AlertTitle>{props.code} : {props.action}</AlertTitle>
-          <div>By {props.from} : <strong>{props.message}</strong> <br />At : {Date(props.time * 1000)}</div>
+          <div>By {props.from} : <strong>{props.message}</strong> <br />At : {moment(props.time).format("L, LTS")}</div>
         </Alert>
       </div>
     );

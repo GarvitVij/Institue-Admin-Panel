@@ -2,49 +2,18 @@ import React, { Component } from 'react';
 import Typography from '../../component/MUI/Typography/Typography';
 import LogsList from '../../component/Logs/LogsList'
 import LogControls from '../../component/Logs/LogControls/LogControls'
+import axios from '../../axios'
+import SnackBar from '../../component/MUI/snackbar/snackbar'
+import moment from 'moment'
 
 class Logs extends Component {
 
         state = {
-            logs:[{
-                code: 200,
-                message: "Task Completed Successfuly",
-                from: "adminOne",
-                action: "Create Student",
-                time: 1612016445000 
-            }, {
-                code: 400,
-                message: "Oops the action failed ! Something went Wrong",
-                from: "adminTwo",
-                action: "Delete Batch Students",
-                time: 1612016445000 
-            }, {
-                code: 500,
-                message: "Server Error ! cant handle the request now !",
-                from: "adminThree",
-                action: "Delete Student",
-                time: 1612016445000 
-            },{
-                code: 204,
-                message: "Update Successfull !",
-                from: "adminOne",
-                action: "Semester Update",
-                time: 1612016445000 
-            },{
-                code: 204,
-                message: "Update Successfull !",
-                from: "adminTwo",
-                action: "Semester Update",
-                time: 1612557712182
-            },{
-                code: 204,
-                message: "Update Successfull !",
-                from: "adminThree",
-                action: "Semester Update",
-                time: 1612016445000 
-            }
-            ],
+            logs:[],
             filteredLogs: [],
+            adminFilter: [],
+            statusCodeFilter: [],
+            operationFilter: [],
             filters: {
                 byCode: '',
                 byAdmin: '',
@@ -55,6 +24,8 @@ class Logs extends Component {
                 to: 0
             },
             modal: false,
+            contentFailed: false,
+            errorMessage: "",
     }
 
     onModalOpenHandler = () => {
@@ -79,19 +50,65 @@ class Logs extends Component {
 
     onSort = () => {
         let filteredLogs = this.state.logs
-            .filter(log => log.code ===  (this.state.filters.byCode !== '' ? this.state.filters.byCode : log.code))
-            .filter(log => (log.action.charAt(0).toLowerCase() + log.action.slice(1).replaceAll(' ','')) === (this.state.filters.byTask !== '' ? this.state.filters.byTask : log.action.charAt(0).toLowerCase() + log.action.slice(1).replaceAll(' ','')))
-            .filter(log => log.from === (this.state.filters.byAdmin !== '' ? this.state.filters.byAdmin : log.from))
-            .filter(log => log.time >= this.state.timestamps.from && log.time <= (this.state.timestamps.to === 0 ? new Date():this.state.timestamps.to))
-        this.setState({filteredLogs: filteredLogs, modal: false})
+            .filter(log => log.statusCode ===  (this.state.filters.byCode !== '' ? this.state.filters.byCode : log.statusCode))
+            .filter(log => log.operationName === (this.state.filters.byTask !== '' ? this.state.filters.byTask : log.operationName))
+            .filter(log => log.by === (this.state.filters.byAdmin !== '' ? this.state.filters.byAdmin : log.by))
+            .filter(log => log.created_at >= this.state.timestamps.from && log.created_at <= (this.state.timestamps.to === 0 ? new Date():this.state.timestamps.to))
+            this.setState({filteredLogs: filteredLogs, modal: false})
     }
 
     onSearch = () => {
-        console.log("Here Goes Request")
+        axios.get('/api/admin/logs/',{
+            withCredentials: true,
+            params: {
+                filters: {
+                    ...this.state.filters,
+                    ...this.state.timestamps
+                }
+            }
+        }).then(res => {
+            let logs = [...this.state.logs]
+            logs = res.data.logs
+            let adminFilter = [...this.state.adminFilter] 
+            adminFilter = res.data.admins
+            let statusCodeFilter = [...this.state.statusCodeFilter]
+            statusCodeFilter = res.data.statusCode
+            let operationFilter = [...this.state.operationFilter]
+            operationFilter = res.data.operationName
+            this.setState({logs: logs, adminFilter: adminFilter, statusCodeFilter: statusCodeFilter, operationFilter: operationFilter })
+        }).catch(err=>{
+            this.setState({contentFailed: true, errorMessage: err.errorMessage})
+            setTimeout(()=>{
+                this.setState({contentFailed: false, errorMessage: ''})
+            }, 3200)
+        })
         this.setState({modal: false})
     }
 
-    componentDidMount(){}
+    componentDidMount(){
+        axios.get('/api/admin/logs/',{withCredentials: true,params: {
+            filters: {
+                ...this.state.filters,
+                ...this.state.timestamps
+            }
+        }}).
+        then(res => {
+            let logs = [...this.state.logs]
+            logs = res.data.logs.map(log => { return {...log, created_at : new Date(moment(log.createdAt)._d).getTime()}})
+            let adminFilter = [...this.state.adminFilter] 
+            adminFilter = res.data.admins
+            let statusCodeFilter = [...this.state.statusCodeFilter]
+            statusCodeFilter = res.data.statusCode
+            let operationFilter = [...this.state.operationFilter]
+            operationFilter = res.data.operationName
+            this.setState({logs: logs, adminFilter: adminFilter, statusCodeFilter: statusCodeFilter, operationFilter: operationFilter })
+        }).catch(err=>{
+            this.setState({contentFailed: true, errorMessage: err.errorMessage})
+            setTimeout(()=>{
+                this.setState({contentFailed: false, errorMessage: ''})
+            }, 3200)
+        })
+    }
 
     render(){
 
@@ -102,6 +119,9 @@ class Logs extends Component {
             <React.Fragment>
                 <Typography styles={TypographyHeadingStyles}>Logs</Typography>
                 <LogControls 
+                    admins={this.state.adminFilter}
+                    statusCode={this.state.statusCodeFilter}
+                    operation={this.state.operationFilter}
                     filterHandler={this.onFilterChangeHandler}
                     selectDefaultValues={this.state.filters}
                     timeHandler={this.onTimestampChangeHandler}
@@ -115,7 +135,8 @@ class Logs extends Component {
                     onSearch={this.onSearch}
                 />
                 <LogsList logs={this.state.filteredLogs.length === 0 ? this.state.logs : this.state.filteredLogs} />
-            </React.Fragment>
+                {this.state.contentFailed ? <SnackBar message={this.state.errorMessage} type="error" /> : null} 
+                </React.Fragment>
             )
     }
 }

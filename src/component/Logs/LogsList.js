@@ -9,15 +9,16 @@ const LogsList = (props) => {
 
     let moreLogs = null
 
+
     if(props.logs.length > 0){
-        logs = props.logs.map((log,index) => 
+        logs = props.logs.map((log) => 
         <DescriptionAlerts 
-            key={index} 
-            code={log.code} 
-            action={log.action} 
-            from={log.from} 
-            message={log.message} 
-            time={log.time} 
+            key={log._id} 
+            code={log.statusCode} 
+            action={log.operationName} 
+            from={log.by} 
+            message={log.desc} 
+            time={log.createdAt} 
         />)
     }
     
