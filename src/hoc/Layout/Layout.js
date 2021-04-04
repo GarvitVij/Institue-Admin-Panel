@@ -14,6 +14,7 @@ import SiteUpdates from '../../container/SiteUpdates/SiteUpdates'
 import Request from '../../container/Request/Request'
 import DetailedReport from '../../container/DetailedReport/DetailedReport'
 import StudentUpdates from '../../container/StudentUpdates/StudentUpdates'
+import Logout from '../../container/Logout/Logout'
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import {Switch, Route} from 'react-router-dom'
 
@@ -99,7 +100,7 @@ class AdminPanelLayout extends Component {
                         <Route exact path="/siteUpdates" component={SiteUpdates} />
                         <Route exact path="/studentUpdates" component={StudentUpdates} />
                         <Route exact path="/logs" component={Logs} />
-                        <Route exact path="/logout" component={Home} />
+                        <Route exact path="/logout" component={Logout} />
                     </Switch>
                 </Paper>
            </div>
