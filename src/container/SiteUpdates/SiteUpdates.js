@@ -5,23 +5,27 @@ import classes from './SiteUpdates.module.css';
 import NoticeUpdate from '../../component/SiteUpdates/Notices/Notices'
 import Fee from '../../component/SiteUpdates/Fees/Fee'
 import Button from '@material-ui/core/Button';
+import axios from '../../axios'
+import SnackBar from '../../component/MUI/snackbar/snackbar'
+
 
    class SiteUpdates extends Component {
        state = {
-        noticesArray: [
-            {id: 1,heading: "Fee Submission", description:"Last date to submit fee is 10 Jan"},
-            {id: 2,heading: "Form Submission", description: "Last date to submit form is 20 Jan"},
-            {id: 3,heading: "Regarding Examination", description: "Exams will start From 30 June"},
-            {id: 4,heading: "Online Classes", description: "Classes will Start from 15Jan"},
-            {id: 5,heading: "", description: ""}
-        ],
+        noticesArray: [],
         isSavableNotices: false,
         isSavableFee: false,
         fee:{
-            semesterFee: 200,
-            backExamFee: 100,
-            maximumBackFee: 500
-        }
+            normalFee: 0,
+            backExamFee: 0,
+            maxPerSemesterFee: 0,
+            minLateFee: 0,
+            maxLateFee: 0,
+            minLateFeeDate: 0,
+            maxLateFeeDate:0
+        },
+        contentFailed: false,
+        errorMessage: "",
+        type: "error"
        }
 
        onChangeNoticeHandler = (event,id) => {
@@ -35,8 +39,83 @@ import Button from '@material-ui/core/Button';
 
        onChangeFeeHandler = (event,id) => {
             const updatedFee = {...this.state.fee}
-            updatedFee[id] = event.target.value 
+
+            if(! typeof event.target.value === "number"){
+                return ;
+            }
+
+            updatedFee[id] = parseInt(event.target.value)
             this.setState({fee: updatedFee, isSavableFee: true})
+       }
+
+       onSaveNotices = () => {
+           axios.patch('/api/admin/settings/notices', {notices: this.state.noticesArray}, {withCredentials: true})
+           .then(res => {
+               if(res.data.success === true){
+                this.setState({type: "success", contentFailed: true, errorMessage: "Notice updated successfully !"})
+                setTimeout(()=>{
+                    this.setState({contentFailed: false, errorMessage: '', type: "errror"})
+                }, 3200)
+               }
+           })
+           .catch(err => {
+                this.setState({contentFailed: true, errorMessage: err.errorMessage})
+                setTimeout(()=>{
+                    this.setState({contentFailed: false, errorMessage: ''})
+                }, 3200)
+           })
+       }
+
+       onSaveFee = () => {
+           axios.patch('/api/admin/settings/fee',{
+               ...this.state.fee
+           },{withCredentials: true})
+           .then(res => {
+            if(res.data.success === true){
+                this.setState({type: "success", contentFailed: true, errorMessage: "Notice updated successfully !"})
+                setTimeout(()=>{
+                    this.setState({contentFailed: false, errorMessage: '', type: "errror"})
+                }, 3200)
+               }
+           }).catch(err => {
+            this.setState({contentFailed: true, errorMessage: err.errorMessage})
+            setTimeout(()=>{
+                this.setState({contentFailed: false, errorMessage: ''})
+            }, 3200)
+           })
+       }
+
+       onTimestampChangeHandler = (date,id) => {
+        let fee = {...this.state.fee}
+        fee[id] = new Date(date._d).getTime()
+        this.setState({fee: fee,  isSavableFee: true})
+        }
+
+
+       componentDidMount(){
+           axios.get('/api/admin/settings', {withCredentials: true})
+           .then(res => {
+                let notices = [...this.state.noticesArray]
+                notices = res.data.notices.map(notice => { 
+                    notice.id = notice._id
+                    delete notice._id
+                    return notice
+                })
+                let fee = {...this.state.fee}
+                fee.normalFee = res.data.normalFee
+                fee.backExamFee = res.data.backExamFee
+                fee.maxPerSemesterFee = res.data.maxPerSemesterFee
+                fee.maxLateFee = res.data.maxLateFee
+                fee.minLateFee = res.data.minLateFee
+                fee.minLateFeeDate = res.data.minLateFeeDate
+                fee.maxLateFeeDate = res.data.maxLateFeeDate
+                this.setState({noticesArray: notices, fee: fee})
+           }).catch(err => {
+                this.setState({contentFailed: true, errorMessage: err.errorMessage})
+                setTimeout(()=>{
+                    this.setState({contentFailed: false, errorMessage: ''})
+                }, 3200)
+           })
        }
 
    render(){
@@ -48,14 +127,14 @@ import Button from '@material-ui/core/Button';
         const notices = this.state.noticesArray.map((notice,index) => 
             <SimpleAccordion 
                 key={notice.id}
-                heading={notice.heading || 'Empty Notice'}
+                heading={notice.title || 'Empty Notice'}
                 iconStyle={accordionIconStyle}
                 typographyStyle={accordionTypographyStyles}
                 >
                 <NoticeUpdate
                     id={notice.id} 
-                    heading={notice.heading} 
-                    description={notice.description}    
+                    heading={notice.title} 
+                    description={notice.desc}    
                     changed={this.onChangeNoticeHandler}
                     />
             </SimpleAccordion> 
@@ -63,7 +142,7 @@ import Button from '@material-ui/core/Button';
 
         const fee = [] 
         for (const feeType in this.state.fee) {
-            fee.push(<Fee label={feeType} changed={this.onChangeFeeHandler} value={this.state.fee[feeType]} />)
+            fee.push(<Fee label={feeType} TimeHandler={this.onTimestampChangeHandler} changed={this.onChangeFeeHandler} value={this.state.fee[feeType]} />)
         }
 
        return (
@@ -81,6 +160,7 @@ import Button from '@material-ui/core/Button';
                                     variant="contained" 
                                     color="primary" 
                                     disabled={!this.state.isSavableNotices} 
+                                    onClick={this.onSaveNotices}
                                     > Save
                                 </Button>
                             </div>
@@ -96,11 +176,13 @@ import Button from '@material-ui/core/Button';
                             variant="contained" 
                             color="primary" 
                             disabled={!this.state.isSavableFee} 
+                            onClick={this.onSaveFee}
                             > Save
                         </Button>
                     </div>
                     </SimpleAccordion>
                 </div>
+                {this.state.contentFailed ? <SnackBar message={this.state.errorMessage} type={this.state.type} /> : null}
                 </div>
         )
    }

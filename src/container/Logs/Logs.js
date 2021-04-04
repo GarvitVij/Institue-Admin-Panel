@@ -91,6 +91,8 @@ class Logs extends Component {
         this.setState({modal: false})
     }
 
+    componentDidMount(){}
+
     render(){
 
         //Typography inline css
