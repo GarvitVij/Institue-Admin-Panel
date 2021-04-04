@@ -11,12 +11,9 @@ import classes from './SearchSort.module.css'
         title: 'Branch',
         id:'branch',
         options: [
-            {value: 'CS-M', text: 'Computer Science Morning'},
-            {value: 'CS-E', text: 'Computer Science Evening'},
-            {value: 'ENE-M', text: 'Electrical & Communication Morning'},
-            {value: 'ENE-E', text: 'Electrical & Communication Evening'},
-            {value: 'AM-M', text: 'AutoMobile Morning'},
-            {value: 'AM-E', text: 'AutoMobile Evening'},
+            {value: 'Computer Engineering', text: 'Computer Science'},
+            {value: 'Automobile Engineering', text: ' AutoMobile'},
+            {value: 'Electronics and Communication Engineering', text: 'Electrical & Communication'},
         ]
     }
 
@@ -30,7 +27,10 @@ import classes from './SearchSort.module.css'
             {value: 4, text: 'Semester Four'},
             {value: 5, text: 'Semester Five'},
             {value: 6, text: 'Semester Six'},
-            {value: 7, text: 'Additional Attempt'},
+            {value: 7, text: 'Semester Seven'},
+            {value: 8, text: 'Semester Eight'},
+            {value: 9, text: 'Semester Nine'},
+            {value: 10, text: 'Semester Ten'},
         ]
     }
 

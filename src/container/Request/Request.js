@@ -4,61 +4,44 @@ import SearchSort from '../../component/Requests/SearchSort/SearchSort'
 import SimpleAccordion from '../../component/MUI/Accordions/SimpleAccordion'
 import Request from '../../component/Requests/Request/Request'
 import classes from './Request.module.css'
+import axios from '../../axios'
+import SnackBar from '../../component/MUI/snackbar/snackbar'
+
 
    class Requests extends Component {
        state = {
-           pendingRequests: [{
-               id:1,
-               rollNumber : 1835051019,
-               semester: 2,
-               branch: 'Computer Science - M',
-               name:'Garvit',
-               subjectFrom: 'DE',
-               subjectTo: 'Maths'
-           },{
-            id:2,
-            rollNumber : 1835051015,
-            semester: 1,
-            branch: 'Computer Science - M',
-            name:'Garvit',
-            subjectFrom: 'DE',
-            subjectTo: 'Maths'
-        },{
-            id:3,
-            rollNumber : 1835051016,
-            semester: 6,
-            branch: 'Computer Science - M',
-            name:'Garvit',
-            subjectFrom: 'DE',
-            subjectTo: 'Maths'
-        },{
-            id:4,
-            rollNumber : 1835051018,
-            semester: 1,
-            branch: 'Computer Science - E',
-            name:'Garvit',
-            subjectFrom: 'DE',
-            subjectTo: 'Maths'
-        },{
-            id:5,
-            rollNumber : 1835051018,
-            semester: 3,
-            branch: 'Electrical & Communication - E',
-            name:'Garvit',
-            subjectFrom: 'DE',
-            subjectTo: 'Maths'
-        }],
+        pendingRequests: [],
         sortedPendingRequest: [],
         modal: false,
         filters:{
-            rollNumber: '',
+            rollNumber: 0,
             branch: '',
-            semester: ''
-        }
+            semester: 0
+        },
+        contentFailed: false,
+        errorMessage: "",
+        type: "error"
        }
 
        updateReceipt = (id) => {
-            console.log('Update Request for', id)
+            axios.patch('/api/admin/request', {
+                id: id,
+                success: true
+            },{withCredentials: true}).then(res => {
+                if(res.data.success === true) {
+                    this.setState({contentFailed: true, errorMessage: "Request Changed !", type: "success"})
+                    this.onSuccessRefresh()
+                    setTimeout(()=>{
+                        this.setState({contentFailed: false, errorMessage: '', type: "error"})
+
+                    }, 3200)
+                }
+            }).catch(err => {
+                this.setState({contentFailed: true, errorMessage: err.errorMessage})
+                setTimeout(()=>{
+                    this.setState({contentFailed: false, errorMessage: ''})
+                }, 3200)
+            })
        }
 
        onModalClose = () => {
@@ -84,11 +67,60 @@ import classes from './Request.module.css'
             this.setState({sortedPendingRequest: filteredRequest, modal: false})      
         }
 
+        onSuccessRefresh = () => {
+            axios.get('/api/admin/request/', {
+                withCredentials: true,
+                params: {
+                    filters: this.state.filters
+                }
+            }).then(res => {
+                let requests = [...this.state.pendingRequests]
+                requests = res.data.request
+                this.setState({pendingRequests: requests})
+            }).catch(err => {
+                this.setState({contentFailed: true, errorMessage: err.errorMessage})
+                setTimeout(()=>{
+                    this.setState({contentFailed: false, errorMessage: ''})
+                }, 3200)
+            })
+        }
+
         onSearch = () =>{
-            console.log('here goes search request ')
+            axios.get('/api/admin/request/', {
+                withCredentials: true, 
+                params:{ 
+                    filters: this.state.filters
+                }
+            }).then(res => {
+                let requests = [...this.state.pendingRequests]
+                requests = res.data.request
+                this.setState({pendingRequests: requests})
+            }).catch(err => {
+                this.setState({contentFailed: true, errorMessage: err.errorMessage})
+                setTimeout(()=>{
+                    this.setState({contentFailed: false, errorMessage: ''})
+                }, 3200)
+            })
             this.setState({modal: false})
         }
 
+        componentDidMount(){
+            axios.get('/api/admin/request/', {
+                withCredentials: true,
+                params: {
+                    filters: this.state.filters
+                }
+            }).then(res => {
+                let requests = [...this.state.pendingRequests]
+                requests = res.data.request
+                this.setState({pendingRequests: requests})
+            }).catch(err => {
+                this.setState({contentFailed: true, errorMessage: err.errorMessage})
+                setTimeout(()=>{
+                    this.setState({contentFailed: false, errorMessage: ''})
+                }, 3200)
+            })
+        }
 
        onSelectHandler = (id,eventValue ) =>  {
         const updatedFilters = {...this.state.filters}
@@ -105,7 +137,11 @@ import classes from './Request.module.css'
    render(){
        const typographySettings = {align:'center', variant:'h2'}
 
+       
         let mappableRequests = this.state.sortedPendingRequest.length === 0 ? this.state.pendingRequests : this.state.sortedPendingRequest 
+        if(mappableRequests === undefined){
+            mappableRequests = []
+        }
         const updates = mappableRequests.map(request =><SimpleAccordion 
                 heading={`Roll Number: ${request.rollNumber}, Branch: ${request.branch}, Semester: ${request.semester}`}>
                 <Request {...request} click={this.updateReceipt} />
@@ -127,6 +163,7 @@ import classes from './Request.module.css'
                 <div className={classes.Request}>
                 {updates}
                 </div>
+                {this.state.contentFailed ? <SnackBar message={this.state.errorMessage} type={this.state.type} /> : null}
                 </div>
        )
    }
