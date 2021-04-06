@@ -17,6 +17,7 @@ import StudentUpdates from '../../container/StudentUpdates/StudentUpdates'
 import Logout from '../../container/Logout/Logout'
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import {Switch, Route} from 'react-router-dom'
+import FourOFour from '../../utils/404/FourOFour'
 
 const theme = createMuiTheme({
     typography: {
@@ -101,6 +102,7 @@ class AdminPanelLayout extends Component {
                         <Route exact path="/studentUpdates" component={StudentUpdates} />
                         <Route exact path="/logs" component={Logs} />
                         <Route exact path="/logout" component={Logout} />
+                        <Route component={FourOFour} />
                     </Switch>
                 </Paper>
            </div>

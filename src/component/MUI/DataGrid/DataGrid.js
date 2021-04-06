@@ -28,6 +28,8 @@ const MUIDataGrid = (props) => {
               components={{
                 Toolbar: GridToolbar,
               }}
+              onRowSelected={(row)=>props.select(row)}
+              onColumnHeaderClick={(event) => props.selectAll(event)}
             />
         </div>
       )

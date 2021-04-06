@@ -11,7 +11,7 @@ import Paper from '@material-ui/core/Paper';
 import classes from '../BasicStyles.module.css'
 
    const DeleteStudent = (props) => {
-    let visibleComponent = <div> <Typography>No students were selected</Typography> <div className={classes.Center}> <Button variant="contained" className={classes.Safe}>Cancle</Button></div></div>
+    let visibleComponent = <div> <Typography>No students were selected</Typography> <div className={classes.Center}> <Button variant="contained" className={classes.Safe}  onClick={props.close}>Cancle</Button></div></div>
 
     if(props.students.length > 0) {
         visibleComponent = 
@@ -28,13 +28,13 @@ import classes from '../BasicStyles.module.css'
                     </TableHead>
                 <TableBody>
                 {props.students.map((student) => (
-                    <TableRow key={student.data.rollNumber}>
+                    <TableRow key={student.rollNumber}>
                       <TableCell component="th" scope="row">
-                        {student.data.rollNumber}
+                        {student.rollNumber}
                       </TableCell>
-                      <TableCell align="right">{student.data.Name}</TableCell>
-                      <TableCell align="right">{student.data.Batch}</TableCell>
-                      <TableCell align="right">{student.data.currentSemester}</TableCell>
+                      <TableCell align="right">{student.name}</TableCell>
+                      <TableCell align="right">{student.batch}</TableCell>
+                      <TableCell align="right">{student.currentSemester}</TableCell>
 
                     </TableRow>
                   ))}
@@ -43,8 +43,8 @@ import classes from '../BasicStyles.module.css'
         </TableContainer>
         <Typography styles={{align:'center'}} style={{margin: '1%'}}>Are you sure, you want to delete above Students</Typography>
         <div className={classes.Center}>
-        <Button variant="contained" className={classes.Danger}>Delete</Button>
-        <Button variant="contained" className={classes.Safe}>Cancle</Button>
+        <Button variant="contained" className={classes.Danger} onClick={props.deleteStudents}>Delete</Button>
+        <Button variant="contained" className={classes.Safe} onClick={props.close}>Cancle</Button>
         </div>
         </div>
     }

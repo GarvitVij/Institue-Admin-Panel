@@ -9,7 +9,7 @@ import classes from '../BasicStyles.module.css'
         if(props.batch){
             visibleComponent = <div><Typography>Are you sure, you want to delete batch {props.batch}</Typography>
             <div className={classes.Center}>
-            <Button variant="contained" className={classes.Danger}>Delete</Button>
+            <Button variant="contained" className={classes.Danger} onClick={props.deleteBatch}>Delete</Button>
             <Button variant="contained" className={classes.Safe} onClick={props.close}>Cancle</Button>
             </div></div>
         }

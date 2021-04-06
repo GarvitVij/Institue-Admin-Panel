@@ -72,7 +72,7 @@ import SnackBar from '../../component/MUI/snackbar/snackbar'
            },{withCredentials: true})
            .then(res => {
             if(res.data.success === true){
-                this.setState({type: "success", contentFailed: true, errorMessage: "Notice updated successfully !"})
+                this.setState({type: "success", contentFailed: true, errorMessage: "Fee updated successfully !"})
                 setTimeout(()=>{
                     this.setState({contentFailed: false, errorMessage: '', type: "errror"})
                 }, 3200)
