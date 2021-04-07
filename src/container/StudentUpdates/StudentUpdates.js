@@ -186,6 +186,40 @@ import { Typography } from '@material-ui/core';
            })
         }
 
+        onIncreaseSemester = () => {
+            axios.patch('/api/admin/student/incSem',{},{withCredentials: true}).then(res => {
+                if(res.data.success === true){
+                    this.setState({contentFailed: true, errorMessage: `semester increased successfully`, type: "success", modalEventName: ''})
+                    setTimeout(()=>{
+                        this.setState({contentFailed: false, errorMessage: '', type:'error'})
+                    }, 3200)
+                }
+           })
+           .catch(err => {
+            this.setState({contentFailed: true, errorMessage: err.errorMessage, modalEventName:''})
+            setTimeout(()=>{
+                this.setState({contentFailed: false, errorMessage: ''})
+            }, 3200)
+           })
+        }
+
+        onPasswordReset = (rollNumber) => {
+            axios.patch('/api/admin/student/resetPwdStudent',{rollNumber: rollNumber},{withCredentials: true}).then(res => {
+                if(res.data.success === true){
+                    this.setState({contentFailed: true, errorMessage: `Password changed successfully`, type: "success", modalEventName: ''})
+                    setTimeout(()=>{
+                        this.setState({contentFailed: false, errorMessage: '', type:'error'})
+                    }, 3200)
+                }
+           })
+           .catch(err => {
+            this.setState({contentFailed: true, errorMessage: err.errorMessage, modalEventName:''})
+            setTimeout(()=>{
+                this.setState({contentFailed: false, errorMessage: ''})
+            }, 3200)
+           })
+        }
+
    render(){
 
     const paperStyle={
@@ -210,6 +244,8 @@ import { Typography } from '@material-ui/core';
                 deleteBatch={this.onDeleteBatch}
                 deleteStudent={this.onDeleteStudent}
                 passHold = {this.onPassHold}
+                incSem={this.onIncreaseSemester}
+                changePassword={this.onPasswordReset}
                 />
             <Paper extraStyles={paperStyle}>
             {this.state.selectedBranch ? <Typography gutterBottom variant="h5" align="center">{this.state.selectedBranch}</Typography> : null}

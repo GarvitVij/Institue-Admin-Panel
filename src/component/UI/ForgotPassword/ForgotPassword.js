@@ -39,7 +39,7 @@ const ForgotPassword = (props) => {
               <Grid container spacing={1} alignItems="flex-end">
 
                 <Grid item className={classes.width}>
-                  <TextField value={props.value} onChange={(event) => {props.inputHandler(event.target.value)}} id="input-with-icon-grid" fullWidth  label="Your RollNumber " />
+                  <TextField value={props.value} onChange={(event) => {props.inputHandler(event.target.value)}} id="input-with-icon-grid" fullWidth  label="Your Admin ID " />
                 </Grid>
               </Grid>
             </FormControl>

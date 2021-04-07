@@ -48,7 +48,7 @@ import Snackbar from '../../component/MUI/snackbar/snackbar'
             return 0;
             }
 
-            axios.patch('/api/student/auth/resetpwd/' + encodeURI(this.state.token), {password: this.state.password})
+            axios.patch('/api/admin/auth/resetpwd/' + encodeURI(this.state.token), {password: this.state.password})
             .then(res => {
                 this.setState({error: true, errorMessage: 'Password Changed !', type: 'success'})
                 setTimeout(()=>{

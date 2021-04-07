@@ -7,19 +7,19 @@ import Snackbar from '../../component/MUI/snackbar/snackbar'
 class Password extends Component {  
 
     state={
-        rollNumber: '',
+        adminID: '',
         showSnackbar : false,
         message : '',
         type: ''
     }
 
-    rollNumberChangeHandler = (value) => {
-        this.setState({rollNumber: value })
+    adminIDChangeHandler = (value) => {
+        this.setState({adminID: value })
     }
 
     ResetPassword = ()=>{
 
-        axios.post('/api/student/auth/resetpwd', { rollNumber: this.state.rollNumber})
+        axios.post('/api/admin/auth/resetpwd', { adminID: this.state.adminID})
         .then(res => {
             this.setState({showSnackbar: true, message: res.data.message, type: 'info' })
             setTimeout(()=>{
@@ -40,8 +40,8 @@ class Password extends Component {
             <div className={classes.Background}></div>  
             <div className={classes.Layout}>
             <ForgotPassword 
-                inputHandler={this.rollNumberChangeHandler} 
-                value={this.state.rollNumber} 
+                inputHandler={this.adminIDChangeHandler} 
+                value={this.state.adminID} 
                 submit={this.ResetPassword}
                 />
             {this.state.showSnackbar === true ? <Snackbar message={this.state.message} type={this.state.type}/> : null}
