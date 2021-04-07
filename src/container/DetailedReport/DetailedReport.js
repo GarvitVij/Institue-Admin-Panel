@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReportControls from '../../component/DeatiledReport/ReportControls/ReportControls'
 import Typography from '../../component/MUI/Typography/Typography'
-import DataGrid from '../../component/MUI/DataGrid/DataGrid'
+import DataGrid from '../../component/MUI/DataGrid/DataGridWithoutSelect'
 import Paper from '../../component/MUI/Paper/Paper'
 import axios from '../../axios'
 import SnackBar from '../../component/MUI/snackbar/snackbar'
@@ -20,7 +20,7 @@ import SnackBar from '../../component/MUI/snackbar/snackbar'
               width: 150,
             },
             {field: 'email', headerName: 'Email', width: 280},
-            {field: 'receipts', headerName: 'Receipts', width: 300 }
+            {field: 'for', headerName: 'Receipts', width: 300 }
           ],
         branches : [],
         selectedBranch: '',
@@ -54,9 +54,20 @@ import SnackBar from '../../component/MUI/snackbar/snackbar'
                 }
             })
             .then(res => {
-                res.data.students = res.data.students.map(student => {return {...student, id: student.rollNumber}})
+                res.data.students = res.data.students.map(student => { 
+                    let ids = ""
+                    if(student.receipts.length > 0) {
+                        ids = student.receipts.map(receipt => receipt.receiptID)
+                        if(ids.length > 0){
+                           ids = ids.join(",")
+                        }
+                    }else{
+                        ids = ""
+                    }
+                        return  {...student, id: student.rollNumber,for: ids}})
                 this.setState({tableData: res.data.students, selectedBranch: event.target.textContent})
             }).catch(err=>{
+                console.log(err)
                 this.setState({contentFailed: true, errorMessage: err.errorMessage})
                 setTimeout(()=>{
                     this.setState({contentFailed: false, errorMessage: ''})

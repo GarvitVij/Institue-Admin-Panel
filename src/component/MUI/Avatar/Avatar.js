@@ -18,8 +18,8 @@ const MUIAvatar = (props) => {
           },
         },
         large: {
-          width: theme.spacing( props.size || 10),
-          height: theme.spacing(props.size || 10),
+          width: theme.spacing( parseInt(props.size) || 10),
+          height: theme.spacing( parseInt(props.size) || 10),
           background: theme.palette.secondary.dark,
           color:theme.palette.secondary.main
         },
