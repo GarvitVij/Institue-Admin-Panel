@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import './App.css';
 import Layout from "./hoc/Layout/Layout"
 import Cookies from 'js-cookie'; 
-import Login from './container/Login/Login'
-import Password from './container/Password/Password';
-import ResetPassword from './container/ResetPassword/ResetPassword'
+import Login from './Container/Login/Login'
+import Password from './Container/Password/Password';
+import ResetPassword from './Container/ResetPassword/ResetPassword'
 import FourOFour from './utils/404/FourOFour'
 import { Route, Switch } from 'react-router-dom'
-import Footer from './component/UI/Footer/Footer'
+import Footer from './Component/UI/Footer/Footer'
 
 class App extends Component {
     state = {

@@ -1,6 +1,6 @@
 /* 
     Description : AppBar Component, created with the help of Material ui
-    Docs: https://material-ui.com/components/app-bar/
+    Docs: https://material-ui.com/Components/app-bar/
 */
 
 import React from 'react';

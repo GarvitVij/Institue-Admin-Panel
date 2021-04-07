@@ -5,12 +5,12 @@
 
 import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
-import Paper from '../../component/MUI/Paper/Paper';
-import Chart from '../../component/Home/Charts/Chart'
-import Notices from '../../component/Home/Notices/Notices'
-import YearlyData from '../../component/Home/YearlyData/YearlyData'
+import Paper from '../../Component/MUI/Paper/Paper';
+import Chart from '../../Component/Home/Charts/Chart'
+import Notices from '../../Component/Home/Notices/Notices'
+import YearlyData from '../../Component/Home/YearlyData/YearlyData'
 import axios from '../../axios'
-import SnackBar from '../../component/MUI/snackbar/snackbar'
+import SnackBar from '../../Component/MUI/snackbar/snackbar'
 
 class Home extends Component {
     state = {

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import ForgotPassword from '../../component/UI/ForgotPassword/ForgotPassword'
+import ForgotPassword from '../../Component/UI/ForgotPassword/ForgotPassword'
 import classes from './Password.module.css';
 import axios from '../../axios'
-import Snackbar from '../../component/MUI/snackbar/snackbar'
+import Snackbar from '../../Component/MUI/snackbar/snackbar'
 
 class Password extends Component {  
 

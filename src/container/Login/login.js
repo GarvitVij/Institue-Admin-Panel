@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import LoginPage from '../../component/LoginPage/LoginPage';
+import LoginPage from '../../Component/LoginPage/LoginPage';
 import classes from './login.module.css';
 import axios from '../../axios';
-import SnackBar from '../../component/MUI/snackbar/snackbar'
+import SnackBar from '../../Component/MUI/snackbar/snackbar'
 
 class Login extends Component {
     state = {

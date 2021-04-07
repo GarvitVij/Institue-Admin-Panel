@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import axios from '../../axios'
 import classes from './ResetPassword.module.css'
-import ResetPasswordUI from '../../component/UI/ResetPassword/ResetPassword'
+import ResetPasswordUI from '../../Component/UI/ResetPassword/ResetPassword'
 import {Redirect} from 'react-router-dom'
-import Snackbar from '../../component/MUI/snackbar/snackbar'
+import Snackbar from '../../Component/MUI/snackbar/snackbar'
 
 
    class ResetPassword extends Component {

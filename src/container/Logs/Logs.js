@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Typography from '../../component/MUI/Typography/Typography';
-import LogsList from '../../component/Logs/LogsList'
-import LogControls from '../../component/Logs/LogControls/LogControls'
+import Typography from '../../Component/MUI/Typography/Typography';
+import LogsList from '../../Component/Logs/LogsList'
+import LogControls from '../../Component/Logs/LogControls/LogControls'
 import axios from '../../axios'
-import SnackBar from '../../component/MUI/snackbar/snackbar'
+import SnackBar from '../../Component/MUI/snackbar/snackbar'
 import moment from 'moment'
 
 class Logs extends Component {

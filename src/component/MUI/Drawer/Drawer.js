@@ -1,6 +1,6 @@
 /* 
     Description: Temporary Drawer, created with the help of Material UI,
-    DOCS: https://material-ui.com/components/app-bar/
+    DOCS: https://material-ui.com/Components/app-bar/
 */
 
 import React from 'react';

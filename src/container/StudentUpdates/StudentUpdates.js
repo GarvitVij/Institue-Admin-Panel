@@ -1,11 +1,11 @@
 // PLEASE DONT GET CONFUSED BRANCH AND BATCH IS THE SAME THING FOR THIS PART, KINDLY LOOK FOR VARIABLE CAREFULLY BEFORE DEBUGGING
 
 import React, { Component } from 'react';
-import DataGrid from '../../component/MUI/DataGrid/DataGrid'
-import Paper from '../../component/MUI/Paper/Paper'
-import Buttons from '../../component/StudentUpdates/Buttons/Buttons'
+import DataGrid from '../../Component/MUI/DataGrid/DataGrid'
+import Paper from '../../Component/MUI/Paper/Paper'
+import Buttons from '../../Component/StudentUpdates/Buttons/Buttons'
 import axios from '../../axios'
-import SnackBar from '../../component/MUI/snackbar/snackbar'
+import SnackBar from '../../Component/MUI/snackbar/snackbar'
 import { Typography } from '@material-ui/core';
 
 

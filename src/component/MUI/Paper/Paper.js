@@ -1,6 +1,6 @@
 /* 
     Description: Its a container, which holds sub elements, created with the help of material Ui,
-    DOCS: https://material-ui.com/components/paper/
+    DOCS: https://material-ui.com/Components/paper/
 */
 
 import React from 'react';

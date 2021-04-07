@@ -1,6 +1,6 @@
 /* 
     Description : Avatar Component[by Default, an icon. if Image Url is given. it would show the image instead], created with the help of Material ui
-    Docs: https://material-ui.com/components/avatars/
+    Docs: https://material-ui.com/Components/avatars/
 */
 
 import React from 'react';

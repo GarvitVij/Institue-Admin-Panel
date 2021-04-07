@@ -1,6 +1,6 @@
 /* 
     Description: this element contains the text that has to be displayed, Created with the help of material UI
-    DOCS: https://material-ui.com/components/typography/
+    DOCS: https://material-ui.com/Components/typography/
     DEFAULT_NAMED_NOTE: Docs import it as Typography, But I imported it as Text, so I could use (var=>) Typography in export
 */
 

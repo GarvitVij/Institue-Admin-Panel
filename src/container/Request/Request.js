@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import Typography from '../../component/MUI/Typography/Typography'
-import SearchSort from '../../component/Requests/SearchSort/SearchSort'
-import SimpleAccordion from '../../component/MUI/Accordions/SimpleAccordion'
-import Request from '../../component/Requests/Request/Request'
+import Typography from '../../Component/MUI/Typography/Typography'
+import SearchSort from '../../Component/Requests/SearchSort/SearchSort'
+import SimpleAccordion from '../../Component/MUI/Accordions/SimpleAccordion'
+import Request from '../../Component/Requests/Request/Request'
 import classes from './Request.module.css'
 import axios from '../../axios'
-import SnackBar from '../../component/MUI/snackbar/snackbar'
+import SnackBar from '../../Component/MUI/snackbar/snackbar'
 
 
    class Requests extends Component {

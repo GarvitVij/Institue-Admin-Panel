@@ -4,17 +4,17 @@
 
 import React, { Component } from 'react';
 import classes from './Layout.module.css'
-import AppBar from "../../component/MUI/AppBar/AppBar";
-import Drawer from '../../component/UI/Drawer/Drawer'
-import Paper from '../../component/MUI/Paper/Paper'
-import Home from '../../container/Home/Home'
-import Logs from '../../container/Logs/Logs'
-import Receipts from '../../container/Receipts/Receipts'
-import SiteUpdates from '../../container/SiteUpdates/SiteUpdates'
-import Request from '../../container/Request/Request'
-import DetailedReport from '../../container/DetailedReport/DetailedReport'
-import StudentUpdates from '../../container/StudentUpdates/StudentUpdates'
-import Logout from '../../container/Logout/Logout'
+import AppBar from "../../Component/MUI/AppBar/AppBar";
+import Drawer from '../../Component/UI/Drawer/Drawer'
+import Paper from '../../Component/MUI/Paper/Paper'
+import Home from '../../Container/Home/Home'
+import Logs from '../../Container/Logs/Logs'
+import Receipts from '../../Container/Receipts/Receipts'
+import SiteUpdates from '../../Container/SiteUpdates/SiteUpdates'
+import Request from '../../Container/Request/Request'
+import DetailedReport from '../../Container/DetailedReport/DetailedReport'
+import StudentUpdates from '../../Container/StudentUpdates/StudentUpdates'
+import Logout from '../../Container/Logout/Logout'
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import {Switch, Route} from 'react-router-dom'
 import FourOFour from '../../utils/404/FourOFour'

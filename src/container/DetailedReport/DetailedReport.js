@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import ReportControls from '../../component/DeatiledReport/ReportControls/ReportControls'
-import Typography from '../../component/MUI/Typography/Typography'
-import DataGrid from '../../component/MUI/DataGrid/DataGridWithoutSelect'
-import Paper from '../../component/MUI/Paper/Paper'
+import ReportControls from '../../Component/DeatiledReport/ReportControls/ReportControls'
+import Typography from '../../Component/MUI/Typography/Typography'
+import DataGrid from '../../Component/MUI/DataGrid/DataGridWithoutSelect'
+import Paper from '../../Component/MUI/Paper/Paper'
 import axios from '../../axios'
-import SnackBar from '../../component/MUI/snackbar/snackbar'
+import SnackBar from '../../Component/MUI/snackbar/snackbar'
 
    class DetailedReport extends Component {
        state = {

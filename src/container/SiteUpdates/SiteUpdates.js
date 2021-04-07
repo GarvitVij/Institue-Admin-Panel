@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import Typography from '../../component/MUI/Typography/Typography' 
-import SimpleAccordion from '../../component/MUI/Accordions/SimpleAccordion'
+import Typography from '../../Component/MUI/Typography/Typography' 
+import SimpleAccordion from '../../Component/MUI/Accordions/SimpleAccordion'
 import classes from './SiteUpdates.module.css';
-import NoticeUpdate from '../../component/SiteUpdates/Notices/Notices'
-import Fee from '../../component/SiteUpdates/Fees/Fee'
+import NoticeUpdate from '../../Component/SiteUpdates/Notices/Notices'
+import Fee from '../../Component/SiteUpdates/Fees/Fee'
 import Button from '@material-ui/core/Button';
 import axios from '../../axios'
-import SnackBar from '../../component/MUI/snackbar/snackbar'
+import SnackBar from '../../Component/MUI/snackbar/snackbar'
 
 
    class SiteUpdates extends Component {

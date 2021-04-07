@@ -1,6 +1,6 @@
 /* 
     Description : Customized Accordion, created with the help of Material ui
-    Docs: https://material-ui.com/components/accordion/
+    Docs: https://material-ui.com/Components/accordion/
 */
 
 import React from 'react';

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import ValidateReceipt from '../../component/Receipt/ValidateReceipt/ValidateReceipt'
-import ShowReceipts from '../../component/Receipt/ShowReceipts/ShowReceipts'
+import ValidateReceipt from '../../Component/Receipt/ValidateReceipt/ValidateReceipt'
+import ShowReceipts from '../../Component/Receipt/ShowReceipts/ShowReceipts'
 import Button from '@material-ui/core/Button';
-import Typography from '../../component/MUI/Typography/Typography'         
+import Typography from '../../Component/MUI/Typography/Typography'         
 import classes from './Receipts.module.css'
 import axios from '../../axios'
-import SnackBar from '../../component/MUI/snackbar/snackbar'
-import ReceiptValidate from '../../component/Receipt/ReceiptValidate/ReceiptValidate'
+import SnackBar from '../../Component/MUI/snackbar/snackbar'
+import ReceiptValidate from '../../Component/Receipt/ReceiptValidate/ReceiptValidate'
 
 class Receipts extends Component {
        state = {
