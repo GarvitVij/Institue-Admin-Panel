@@ -2,7 +2,7 @@ import axios from 'axios'
 
 
 let instance = axios.create({
-    baseURL: `//localhost:5000`,
+    // baseURL: `//localhost:5000`,
   })
 
 instance.interceptors.response.use( function (response) {
