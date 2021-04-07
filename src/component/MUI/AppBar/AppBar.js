@@ -9,8 +9,8 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import AccountCircle from '@material-ui/icons/AccountCircle';
 import PropTypes from 'prop-types';
+import Avatar from '../Avatar/Avatar';
 
 
 const MenuAppBar = (props) => {
@@ -32,6 +32,15 @@ const MenuAppBar = (props) => {
         },
         appBarColor: {
             background: theme.palette.secondary.main
+        },ProfileImage:{
+            borderRadius: '50%',
+            width:"30%",
+            right:"2%"
+        },
+        fixImage:{
+            display:'flex',
+            justifyContent:'flex-end',
+            
         }
       
           }
@@ -39,6 +48,12 @@ const MenuAppBar = (props) => {
       
 
     const classes = useStyles();
+
+    const profileDefault = (
+        <IconButton>
+        <Avatar size="7" />
+        </IconButton>
+    )
 
      return (
         <div className={classes.root}>
@@ -53,7 +68,9 @@ const MenuAppBar = (props) => {
                         aria-controls="profile-picture"
                         aria-haspopup="false"
                     >
-                        <AccountCircle className={classes.appBarIconSettings} />
+                    <div className={classes.fixImage}>
+                    {profileDefault}
+                </div>
                     </IconButton>
                     </div>
                 </Toolbar>

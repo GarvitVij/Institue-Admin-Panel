@@ -4,7 +4,9 @@
 
 import React from 'react';
 import MUILists from '../../MUI/Lists/Lists'
+import classes from './Lists.module.css'
 import Avatar from '../../MUI/Avatar/Avatar'
+import Cookie from 'js-cookie'
 
 const listItems = [
     {
@@ -45,6 +47,10 @@ const listItems = [
 const Lists = (props) => (
     <MUILists list={listItems}>
         <Avatar />
+        <div className={classes.Name}>
+        <h3>Welcome</h3>
+        <h3>{Cookie.get('name').replace("%20", " ")}</h3>
+        </div>
     </MUILists>
 )
 

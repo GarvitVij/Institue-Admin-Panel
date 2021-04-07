@@ -6,7 +6,7 @@ import Login from './container/Login/Login'
 import Password from './container/Password/Password';
 import ResetPassword from './container/ResetPassword/ResetPassword'
 import FourOFour from './utils/404/FourOFour'
-import { Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import Footer from './component/UI/Footer/Footer'
 
 class App extends Component {
@@ -30,12 +30,12 @@ class App extends Component {
 
    render(){
        let route = (
-           <switch>
-            <Route exact path="/" render={()=><Login refresh={this.checkValidity}/ >}/>
-            <Route exact path="/forgot-password" component={Password}/>
-            <Route exact path="/reset-password/:id" component={ResetPassword} />
-            <Route component={FourOFour} />
-           </switch>
+           <Switch>
+                <Route exact path="/reset-password/:id" component={ResetPassword} />
+                <Route exact path="/forgot-password" component={Password}/>
+                <Route exact path="/" render={()=><Login refresh={this.checkValidity}/ >}/>
+                <Route component={FourOFour} />
+           </Switch>
        )
 
         if(this.state.isAuthenticated){

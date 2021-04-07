@@ -18,10 +18,10 @@ const MUIAvatar = (props) => {
           },
         },
         large: {
-          width: theme.spacing(10),
-          height: theme.spacing(10),
-          background: theme.palette.secondary.main,
-          color:theme.palette.secondary.dark
+          width: theme.spacing( props.size || 10),
+          height: theme.spacing(props.size || 10),
+          background: theme.palette.secondary.dark,
+          color:theme.palette.secondary.main
         },
         center:{
             display:'flex',
@@ -32,10 +32,20 @@ const MUIAvatar = (props) => {
     
     const classes = useStyles();
 
+
+    let Default = (    
+        <Avatar className={classes.large}>
+            <AccountCircleIcon className={[classes.large , classes.edit]}/>
+        </Avatar>
+    )
+    if(localStorage.getItem("image")){
+        Default =<Avatar className={classes.large} src={localStorage.getItem("image")} />
+    }
+
     return (
         <div className={classes.center}>
             <Avatar className={classes.large}>
-                <AccountCircleIcon className={classes.large}/>
+            {Default}
             </Avatar>
         </div>
     )    

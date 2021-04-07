@@ -85,6 +85,16 @@ class AdminPanelLayout extends Component {
         this.setState({isDrawerOpen: false})
     }
 
+    componentDidMount(){
+        if(!localStorage.getItem("image") || localStorage.getItem("image") === "null"){
+            const image = prompt("Enter Url for profile picture (optional)", "Some-Image-Url")
+            if(image !== "Some-Image-Url"){
+            localStorage.setItem("image",image)
+            this.setState({imageChanged: true})
+            }
+        }
+    }
+
    render(){
        return (
         <MuiThemeProvider theme={theme}>
