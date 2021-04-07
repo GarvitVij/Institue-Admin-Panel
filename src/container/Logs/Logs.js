@@ -91,8 +91,8 @@ class Logs extends Component {
                 ...this.state.filters,
                 ...this.state.timestamps
             }
-        }}).
-        then(res => {
+        }})
+        .then(res => {
             let logs = [...this.state.logs]
             logs = res.data.logs.map(log => { return {...log, created_at : new Date(moment(log.createdAt)._d).getTime()}})
             let adminFilter = [...this.state.adminFilter] 

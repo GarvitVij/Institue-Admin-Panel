@@ -2,7 +2,6 @@ import React from 'react';
 import classes from './Footer.module.css'
 import Typography from '@material-ui/core/Typography';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
-import {  NavLink } from 'react-router-dom';
 
 
 const Footer = (props) => {
