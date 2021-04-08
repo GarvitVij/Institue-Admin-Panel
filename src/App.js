@@ -47,10 +47,10 @@ class App extends Component {
 
 
        return (
-            <div>
-                {route}
-                {this.state.isAuthenticated ? null : <Route component={Footer} /> } 
-            </div>
+                <div>
+                    {route}
+                    {this.state.isAuthenticated ? null : <Route component={Footer} /> } 
+                </div>
            )
    }
 }
