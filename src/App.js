@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense } from 'react';
 import './App.css';
-import Layout from "./hoc/Layout/Layout"
 import Cookies from 'js-cookie'; 
 import Login from './Container/Login/Login'
 import Password from './Container/Password/Password';
@@ -8,6 +7,7 @@ import ResetPassword from './Container/ResetPassword/ResetPassword'
 import FourOFour from './utils/404/FourOFour'
 import { Route, Switch } from 'react-router-dom'
 import Footer from './Component/UI/Footer/Footer'
+const Layout = React.lazy(()=> import("./hoc/Layout/Layout"))
 
 class App extends Component {
     state = {
@@ -39,7 +39,10 @@ class App extends Component {
        )
 
         if(this.state.isAuthenticated){
-            route = <Layout />
+            route =
+            <Suspense fallback={<div>Loading...</div>}>
+            <Layout />
+            </Suspense>
         }
 
 
