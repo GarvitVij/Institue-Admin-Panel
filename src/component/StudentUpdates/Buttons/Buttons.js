@@ -45,6 +45,9 @@ import axios from '../../../axios'
             .then(res => {
                 if(res.data.success === true){
                     props.success("Student inserted successfully !")
+                    setTimeout(()=>{
+                        window.location.reload(false);
+                    },2000)
                 }
                 toggleRequest(false)
             })

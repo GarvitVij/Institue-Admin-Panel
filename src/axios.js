@@ -2,7 +2,7 @@ import axios from 'axios'
 
 
 let instance = axios.create({
-    baseURL: `//${process.env.REACT_APP_BACKEND_URL}`,
+    baseURL: `https://gtbpi-backend.herokuapp.com/`,
   })
 
 instance.interceptors.response.use( function (response) {
